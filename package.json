@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex.git"
+    "url": "git+https://github.com/viryys/middle.messenger.praktikum.yandex.git"
   },
   "keywords": [
     "chat",
@@ -20,9 +20,9 @@
   "author": "Vadim Tatarchuk",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex/issues"
+    "url": "https://github.com/viryys/middle.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
+  "homepage": "https://github.com/viryys/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "express": "^4.17.2",
     "parcel": "^2.0.1"
