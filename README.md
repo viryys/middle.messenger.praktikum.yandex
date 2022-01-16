@@ -7,6 +7,7 @@
 [ссылка на проект](https://tatarchuk.netlify.app/)
 [ссылка на дизайн будущего чата на ресурсе figma](https://www.figma.com/file/jwHNcD2NtJvqeBidW0ddVF/praktikum.chat?node-id=0%3A1)
 
+
 ## Установка
 Как установить проект локально:
 
