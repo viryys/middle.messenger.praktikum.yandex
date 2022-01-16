@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel -p 3000 static/index.html",
     "build": "parcel build --no-minify static/index.html",
-    "start": "node ./server.js"
+    "start": "parcel -p 3000 static/index.html"
   },
   "repository": {
     "type": "git",
