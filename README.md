@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8225fd61-6774-441a-be91-4a11f111b10d/deploy-status)](https://app.netlify.com/sites/tatarchuk/deploys)
+
 ## Описание
 - Данный проект является практическим, для повышения навыков front-end разработки
 - На данной стадии я сделал Шаблоны страниц онлайн чата
