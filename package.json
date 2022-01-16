@@ -30,10 +30,7 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/config-default": "^2.2.0",
-    "chokidar": "^3.5.2",
-    "core-js": "^3.20.3",
     "express": "^4.17.2",
-    "fsevents": "^2.3.2",
     "parcel": "^2.0.1",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "postcss-modules": "^3.2.2",
