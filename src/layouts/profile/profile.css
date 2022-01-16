@@ -1,0 +1,146 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+.assetLeft {
+    display: flex;
+    align-items: stretch;
+}
+
+.mainContent {
+    display: flex;
+    flex-grow: 1;
+}
+
+.buttonBack {
+    display: flex;
+    align-items: center;
+    background: #FBFBFB;
+    color: #fff;
+    width: 64px;
+    height: 100%;
+
+}
+
+.buttonBack span {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 28px;
+    height: 28px;
+    background: #4BB049;
+    border-radius: 50%;
+
+}
+
+.buttonBack:hover span {
+    background: #347D33;
+}
+
+.buttonBack img {
+    width: 11px;
+    height: 10px;
+
+}
+
+.profileWrapper {
+    width: 510px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.defaultAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #EFEFEF;
+    margin: 0 auto 20px;
+}
+
+.defaultAvatar img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.firstName {
+    text-align: center;
+    color: #1E1E1E;
+}
+
+.profileString {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.profileStringLeft {
+    font-size: 14px;
+    color: #1E1E1E;
+    line-height: 32px;
+}
+
+.profileStringRight {
+    font-size: 14px;
+    color: #999;
+    line-height: 32px;
+}
+
+.profileStringRight input {
+    border: 0;
+    font-size: 14px;
+    color: #1E1E1E;
+    text-align: right;
+    outline: none;
+}
+
+.profileString:last-child {
+    border-bottom: 0 solid #EAEAEA;
+}
+
+.profileStringsMenu {
+    margin-top: 40px;
+}
+
+.link {
+    color: #4BB049;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.warn {
+    color: #f00;
+}
+
+.button {
+    background: #4BB049;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    color: #fff;
+    border: 0;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 80px;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #347D33;
+}

@@ -4,8 +4,8 @@
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/parcel -p 3000 static/*.html",
-    "build": "./node_modules/.bin/parcel build static/*.html",
+    "dev": "./node_modules/.bin/parcel -p 3000 static/index.html",
+    "build": "./node_modules/.bin/parcel build static/index.html",
     "start": "node ./server.js"
   },
   "repository": {
