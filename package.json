@@ -4,8 +4,10 @@
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
     "dev": "parcel -p 3000 tpl/*.html",
+    "build": "rm -rf dist && parcel build tpl/index.html --no-cache --log-level verbose",
     "start": "node ./server.js"
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/viryys/middle.messenger.praktikum.yandex.git"
