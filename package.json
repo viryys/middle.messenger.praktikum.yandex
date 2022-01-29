@@ -4,6 +4,7 @@
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
     "dev": "parcel -p 3000 tpl/*.html",
+    "build": "parcel -p 3000 tpl/*.html",
     "start": "node ./server.js"
   },
   "repository": {
