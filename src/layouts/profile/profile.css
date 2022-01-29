@@ -35,11 +35,14 @@
     height: 28px;
     background: #4BB049;
     border-radius: 50%;
-
 }
 
 .buttonBack:hover span {
     background: #347D33;
+}
+
+.backSvg {
+    color: white;
 }
 
 .buttonBack img {
@@ -52,6 +55,10 @@
     width: 510px;
     margin: 0 auto;
     padding-top: 60px;
+}
+
+.profileStringsWrapper {
+
 }
 
 .defaultAvatar {

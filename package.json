@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel -p 3000 static/index.html",
-    "build": "parcel build --no-minify static/index.html",
-    "start": "parcel -p 3000 static/index.html"
+    "dev": "parcel -p 3000 tpl/*.html",
+    "start": "node ./server.js"
   },
   "repository": {
     "type": "git",
@@ -23,19 +21,23 @@
     "url": "https://github.com/viryys/middle.messenger.praktikum.yandex/issues"
   },
   "staticFiles": {
-    "staticPath": "static",
-    "watcherGlob": "**"
+    "staticPath": "static/"
   },
   "homepage": "https://github.com/viryys/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/config-default": "^2.2.0",
+    "@parcel/transformer-inline-string": "^2.2.1",
+    "@parcel/transformer-sass": "^2.2.1",
+    "autoprefixer": "^10.4.2",
     "express": "^4.17.2",
-    "parcel": "^2.0.1",
-    "parcel-plugin-static-files-copy": "^2.6.0",
-    "postcss-modules": "^3.2.2",
-    "postcss-preset-env": "^6.7.0",
-    "sass": "^1.48.0"
+    "parcel": "^2.2.1",
+    "parcel-reporter-static-files-copy": "^1.3.4",
+    "parcel-transformer-hbs": "^1.0.4",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2",
+    "postcss-modules": "^4.3.0",
+    "postcss-preset-env": "^7.2.3",
+    "typescript": "^4.5.5"
   },
   "engines": {
     "node": "^14.0.0"
