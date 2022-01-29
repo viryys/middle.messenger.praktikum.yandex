@@ -1,0 +1,10 @@
+{
+  "modules": true,
+  "plugins": {
+    "postcss-import": true,
+    "postcss-preset-env": {},
+    "postcss-modules": {
+      "generateScopedName": "_[name]__[local]"
+    }
+  }
+}

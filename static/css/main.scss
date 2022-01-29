@@ -1,0 +1,17 @@
+html,body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  font-family: "PT Sans", sans-serif;
+  position: relative;
+  min-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

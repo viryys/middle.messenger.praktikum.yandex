@@ -1,0 +1,24 @@
+.link {
+    color: #3369F3;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-top: 70px;
+    display: block;
+    text-align: center;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.title {
+    font-size: 40px;
+    color: #1E1E1E;
+    text-align: center;
+}
+
+.description {
+    text-align: center;
+    color: #1E1E1E;
+    font-size: 20px;
+}
