@@ -1,4 +1,4 @@
-html,body {
+html, body {
   height: 100%;
 }
 
@@ -11,6 +11,10 @@ main {
   position: relative;
   min-height: 100%;
 
+  display: flex;
+}
+
+.login-wrapper, .error-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
