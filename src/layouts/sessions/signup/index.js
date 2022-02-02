@@ -1,8 +1,8 @@
-import signupTemplate from "./signup.hbs"
-import * as styles from "../signin/signin.css"
+import signupTemplate from './signup.hbs';
+import * as styles from '../signin/signin.css';
 
-const root = document.querySelector("#root")
+const root = document.querySelector('#root');
 
-const data = {styles};
+const data = { styles };
 
-root.innerHTML = signupTemplate(data)
+root.innerHTML = signupTemplate(data);

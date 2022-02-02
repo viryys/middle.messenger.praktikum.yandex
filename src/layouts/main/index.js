@@ -1,7 +1,7 @@
-import mainTemplate from "./main.hbs";
+import mainTemplate from './main.hbs';
 
-const root = document.querySelector("#root")
+const root = document.querySelector('#root');
 
 const data = {};
 
-root.innerHTML = mainTemplate(data)
+root.innerHTML = mainTemplate(data);
