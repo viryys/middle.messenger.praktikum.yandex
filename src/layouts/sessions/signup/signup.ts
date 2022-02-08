@@ -13,25 +13,6 @@ export class SignUp extends Block {
   }
 
   protected render(): DocumentFragment {
-    const button = new Button({
-      title: "Зарегистрировать",
-      type: TYPES.submit,
-      id: "submitSignUp",
-      className: styles.button,
-      events: {
-        click: {
-          currentEl: "#submitSignUp",
-          func: (event) => {
-            event.preventDefault();
-
-            const allData = {};
-
-            console.log("clicked", allData);
-          },
-        },
-      },
-    });
-
     const inputEmail = new Input({
       wrapperClassName: styles.inputGroup,
       id: "email",
@@ -52,7 +33,6 @@ export class SignUp extends Block {
 
             const inputVal = event.target!.value;
             const validateRules = [
-              Validate.minLength(inputVal, 3),
               Validate.email(inputVal),
             ];
 
@@ -302,7 +282,6 @@ export class SignUp extends Block {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
-              Validate.minLength(inputVal, 6),
             ];
 
             let validateInput = {
@@ -323,6 +302,97 @@ export class SignUp extends Block {
               validate: validateInput,
               errorClassName: !validateInput.validate ? styles.error : "",
             });
+          },
+        },
+      },
+    });
+
+    const button = new Button({
+      title: "Зарегистрировать",
+      type: TYPES.submit,
+      id: "submitSignUp",
+      className: styles.button,
+      events: {
+        click: {
+          currentEl: "#submitSignUp",
+          func: (event) => {
+            event.preventDefault();
+
+            const form = {
+              inputEmail: [
+                Validate.requireField(inputEmail.getValue()),
+                Validate.email(inputEmail.getValue()),
+              ],
+              inputLogin: [
+                Validate.requireField(inputLogin.getValue()),
+                Validate.minLength(inputLogin.getValue(), 3),
+              ],
+              inputFirstName: [
+                Validate.requireField(inputFirstName.getValue()),
+                Validate.minLength(inputFirstName.getValue(), 3),
+                Validate.firstName(inputFirstName.getValue()),
+              ],
+              inputSecondName: [
+                Validate.requireField(inputSecondName.getValue()),
+                Validate.minLength(inputSecondName.getValue(), 3),
+                Validate.firstName(inputSecondName.getValue()),
+              ],
+              inputPhone: [
+                Validate.requireField(inputPhone.getValue()),
+                Validate.phone(inputPhone.getValue()),
+              ],
+              inputPassword: [
+                Validate.requireField(inputPassword.getValue()),
+                Validate.minLength(inputPassword.getValue(), 6),
+              ],
+              inputRepeatPassword: [
+                Validate.equelValues(inputPassword.getValue(), inputRepeatPassword.getValue()),
+              ],
+            };
+            const inputFields = {
+              inputEmail,
+              inputLogin,
+              inputFirstName,
+              inputSecondName,
+              inputPhone,
+              inputPassword,
+              inputRepeatPassword,
+            };
+
+            let validateForm = true;
+
+            for (const [key, value] of Object.entries(form)) {
+              console.log(`${key}:`, value);
+
+              value.some((validateVal) => {
+                if (!validateVal.validate) {
+                  console.log("Ошибка", validateVal);
+
+                  inputFields[key].setProps({
+                    validate: validateVal,
+                    errorClassName: styles.error,
+                  });
+
+                  validateForm = false;
+
+                  return true;
+                }
+                return false;
+              });
+            }
+
+            if (validateForm) {
+              const allData = {
+                email: inputEmail.getValue(),
+                login: inputLogin.getValue(),
+                first_name: inputFirstName.getValue(),
+                second_name: inputSecondName.getValue(),
+                phone: inputPhone.getValue(),
+                password: inputPassword.getValue(),
+              };
+
+              console.log("clicked", allData);
+            }
           },
         },
       },
