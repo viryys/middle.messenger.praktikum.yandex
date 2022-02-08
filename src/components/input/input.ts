@@ -1,5 +1,5 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import template from "./inputLabel.hbs";
+import template from "./InputLabel.hbs";
 import compile from "../../utils/compile";
 import {ValidateMsg} from "../../utils/types";
 
