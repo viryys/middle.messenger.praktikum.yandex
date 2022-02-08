@@ -38,6 +38,16 @@
     outline: none;
 }
 
+.inputGroup input.error {
+    border-color: #FF2F2F;
+}
+
+.inputGroup p.error {
+    color: #FF2F2F;
+    font-size: 12px;
+    margin: 0 0 4px;
+}
+
 .button {
     background: #4BB049;
     border-radius: 8px;
