@@ -25,7 +25,6 @@ export class SignIn extends Block {
         blur: {
           currentEl: "#login",
           func: (event) => {
-            console.log("blur login", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -91,12 +90,48 @@ export class SignIn extends Block {
           func: (event) => {
             event.preventDefault();
 
-            const allData = {
-              login: inputLogin.getValue(),
-              password: inputPassword.getValue(),
+            const form = {
+              inputLogin: [
+                Validate.requireField(inputLogin.getValue()),
+                Validate.minLength(inputLogin.getValue(), 3),
+              ],
+              inputPassword: [
+                Validate.requireField(inputPassword.getValue()),
+                Validate.minLength(inputPassword.getValue(), 6),
+              ],
             };
 
-            console.log("clicked", allData);
+            const inputFields = {
+              inputLogin,
+              inputPassword,
+            };
+
+            let validateForm = true;
+
+            for (const [key, value] of Object.entries(form)) {
+              value.some((validateVal) => {
+                if (!validateVal.validate) {
+                  inputFields[key].setProps({
+                    validate: validateVal,
+                    errorClassName: styles.error,
+                  });
+
+                  validateForm = false;
+
+                  return true;
+                }
+                return false;
+              });
+            }
+
+            if (validateForm) {
+              const allData = {
+                login: inputLogin.getValue(),
+                password: inputPassword.getValue(),
+              };
+
+              console.log("SubmitData", allData);
+            }
           },
         },
       },

@@ -25,7 +25,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#email",
           func: (event) => {
-            console.log("blur email", event.target!.value);
             let validateInput = {
               validate: true,
               message: "",
@@ -66,7 +65,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#login",
           func: (event) => {
-            console.log("blur login", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -108,7 +106,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#first_name",
           func: (event) => {
-            console.log("blur first_name", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -151,7 +148,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#second_name",
           func: (event) => {
-            console.log("blur second_name", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -194,7 +190,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#phone",
           func: (event) => {
-            console.log("blur [phone]", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -236,7 +231,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#password",
           func: (event) => {
-            console.log("blur [password]", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -278,7 +272,6 @@ export class SignUp extends Block {
         blur: {
           currentEl: "#repeat_password",
           func: (event) => {
-            console.log("blur [repeat_password]", event.target!.value);
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
@@ -362,12 +355,8 @@ export class SignUp extends Block {
             let validateForm = true;
 
             for (const [key, value] of Object.entries(form)) {
-              console.log(`${key}:`, value);
-
               value.some((validateVal) => {
                 if (!validateVal.validate) {
-                  console.log("Ошибка", validateVal);
-
                   inputFields[key].setProps({
                     validate: validateVal,
                     errorClassName: styles.error,
@@ -391,7 +380,7 @@ export class SignUp extends Block {
                 password: inputPassword.getValue(),
               };
 
-              console.log("clicked", allData);
+              console.log("SumbitData", allData);
             }
           },
         },
