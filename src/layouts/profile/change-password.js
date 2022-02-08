@@ -1,12 +1,13 @@
+import backSvg from "bundle-text:../../../static/img/back.svg";
 import profileTemplate from "./change-password.hbs";
-import * as styles from "./profile.css"
-import backSvg from 'bundle-text:../../../static/img/back.svg';
+import * as styles from "./profile.css";
 
-const root = document.querySelector("#root")
+const root = document.querySelector("#root");
 
-const data = {styles};
+const data = { styles };
 
-root.innerHTML = profileTemplate(data)
+root.innerHTML = profileTemplate(data);
 
-let logo = document.getElementById('backSVG');
+const logo = document.getElementById("backSVG");
+
 logo.innerHTML = backSvg;

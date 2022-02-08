@@ -1,0 +1,5 @@
+<div class="{{wrapperClassName}}">
+    {{#if labelName}}<label for="{{id}}">{{labelName}}</label>{{/if}}
+    <input type="{{type}}" class="{{errorClassName}}" placeholder="{{placeholder}}" id="{{id}}" name="{{inputName}}" value="{{value}}">
+    {{#if validate.message}}<p class="{{errorClassName}}">{{validate.message}}</p>{{/if}}
+</div>

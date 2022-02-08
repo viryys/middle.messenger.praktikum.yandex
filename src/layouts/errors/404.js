@@ -1,8 +1,9 @@
 import error404Template from "./404.hbs";
-import * as styles from "./errors.css"
+import * as styles from "./errors.css";
 
-const root = document.querySelector("#root")
+// eslint-disable-next-line no-undef
+const root = document.querySelector("#root");
 
-const data = {styles};
+const data = { styles };
 
-root.innerHTML = error404Template(data)
+root.innerHTML = error404Template(data);
