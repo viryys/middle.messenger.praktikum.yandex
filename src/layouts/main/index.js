@@ -4,7 +4,7 @@ import dot from "bundle-text:../../../static/img/dot.svg";
 import clip from "bundle-text:../../../static/img/clip.svg";
 import backSvg from "bundle-text:../../../static/img/back.svg";
 import mainTemplate from "./main.hbs";
-import styles from "./main.css";
+import * as styles from "./main.css";
 
 const root = document.querySelector("#root");
 
