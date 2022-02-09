@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
-    "eslint": "node_modules/.bin/eslint ./src --ext .js,.ts",
+    "eslint": "eslint ./src --ext .js,.ts",
     "dev": "parcel -p 3000 tpl/*.html",
     "build": "rm -rf dist && parcel build tpl/index.html --no-cache --log-level verbose",
     "start": "node ./server.js"

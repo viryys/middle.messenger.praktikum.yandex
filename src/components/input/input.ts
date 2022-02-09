@@ -1,25 +1,24 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
 import template from "./InputLabel.hbs";
 import compile from "../../utils/compile";
-import {ValidateMsg} from "../../utils/types";
+import { ValidateMsg } from "../../utils/types";
 
-export enum TYPES_INPUT {
-  button = "button",
-  checkbox = "checkbox",
-  hidden = "hidden",
-  password = "password",
-  radio = "radio",
-  reset = "reset",
-  submit = "submit",
-  text = "text",
+export enum TypesInput {
+  Button = "button",
+  Checkbox = "checkbox",
+  Hidden = "hidden",
+  Password = "password",
+  Radio = "radio",
+  Reset = "reset",
+  Submit = "submit",
+  Text = "text",
 }
 
-export class Input extends Block {
-  constructor(props: {
-    wrapperClassName: string,
+type Props = {
+  wrapperClassName: string,
     id: string,
     labelName:string,
-    type: TYPES_INPUT,
+    type: TypesInput,
     placeholder:string,
     inputName:string,
     value: string,
@@ -28,13 +27,11 @@ export class Input extends Block {
       blur?: CurrentElementEvent
     },
     errorClassName?: string,
-    validate?: ValidateMsg}) {
-    super("div", props);
+    validate?: ValidateMsg}
 
-    this.props.validate = {
-      validate: true,
-      message: "",
-    };
+export class Input extends Block {
+  constructor(props: Props) {
+    super("div", props);
   }
 
   getValue(): string {

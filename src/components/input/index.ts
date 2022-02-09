@@ -1,1 +1,1 @@
-export { Input as default, TYPES_INPUT } from "./input";
+export { Input as default, TypesInput } from "./input";

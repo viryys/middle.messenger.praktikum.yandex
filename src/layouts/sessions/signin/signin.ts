@@ -2,8 +2,8 @@ import Block from "../../../utils/Block";
 import Validate from "../../../utils/validate";
 import signInTemplate from "./signin.hbs";
 import * as styles from "./signin.css";
-import Button, { TYPES } from "../../../components/button";
-import Input, { TYPES_INPUT } from "../../../components/input";
+import Button, { Types } from "../../../components/button";
+import Input, { TypesInput } from "../../../components/input";
 import compile from "../../../utils/compile";
 import renderDOM from "../../../utils/renderDOM";
 
@@ -19,8 +19,12 @@ export class SignIn extends Block {
       labelName: "Логин",
       placeholder: "Ввведите логин",
       inputName: "login",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#login",
@@ -60,8 +64,12 @@ export class SignIn extends Block {
       labelName: "Пароль",
       placeholder: "Введите пароль",
       inputName: "password",
-      type: TYPES_INPUT.password,
+      type: TypesInput.Password,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#password",
@@ -81,7 +89,7 @@ export class SignIn extends Block {
 
     const button = new Button({
       title: "Войти",
-      type: TYPES.submit,
+      type: Types.Submit,
       id: "submitLogin",
       className: styles.button,
       events: {

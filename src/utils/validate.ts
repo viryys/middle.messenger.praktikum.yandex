@@ -1,4 +1,4 @@
-import {ValidateMsg} from "./types";
+import { ValidateMsg } from "./types";
 
 export default class Validate {
   static requireField(val: string): ValidateMsg {

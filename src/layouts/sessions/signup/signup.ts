@@ -3,8 +3,8 @@ import renderDOM from "../../../utils/renderDOM";
 import compile from "../../../utils/compile";
 import signUpTemplate from "./signup.hbs";
 import * as styles from "../signin/signin.css";
-import Button, { TYPES } from "../../../components/button";
-import Input, { TYPES_INPUT } from "../../../components/input";
+import Button, { Types } from "../../../components/button";
+import Input, { TypesInput } from "../../../components/input";
 import Validate from "../../../utils/validate";
 
 export class SignUp extends Block {
@@ -19,8 +19,12 @@ export class SignUp extends Block {
       labelName: "Почта",
       placeholder: "Ввведите адрес почты",
       inputName: "email",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#email",
@@ -59,8 +63,12 @@ export class SignUp extends Block {
       labelName: "Логин",
       placeholder: "Ввведите логин",
       inputName: "login",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#login",
@@ -100,8 +108,12 @@ export class SignUp extends Block {
       labelName: "Имя",
       placeholder: "Ввведите имя",
       inputName: "first_name",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#first_name",
@@ -142,8 +154,12 @@ export class SignUp extends Block {
       labelName: "Фамилия",
       placeholder: "Ввведите фамилию",
       inputName: "second_name",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#second_name",
@@ -184,8 +200,12 @@ export class SignUp extends Block {
       labelName: "Телефон",
       placeholder: "Ввведите телефон",
       inputName: "phone",
-      type: TYPES_INPUT.text,
+      type: TypesInput.Text,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#phone",
@@ -225,8 +245,12 @@ export class SignUp extends Block {
       labelName: "Пароль",
       placeholder: "Ввведите пароль",
       inputName: "password",
-      type: TYPES_INPUT.password,
+      type: TypesInput.Password,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#password",
@@ -266,8 +290,12 @@ export class SignUp extends Block {
       labelName: "Повторите пароль",
       placeholder: "Повторите пароль",
       inputName: "password",
-      type: TYPES_INPUT.password,
+      type: TypesInput.Password,
       value: "",
+      validate: {
+        validate: true,
+        message: "",
+      },
       events: {
         blur: {
           currentEl: "#repeat_password",
@@ -302,7 +330,7 @@ export class SignUp extends Block {
 
     const button = new Button({
       title: "Зарегистрировать",
-      type: TYPES.submit,
+      type: Types.Submit,
       id: "submitSignUp",
       className: styles.button,
       events: {
