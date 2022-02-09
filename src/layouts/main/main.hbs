@@ -8,75 +8,33 @@
         <input type="text" placeholder="Поиск чатов" value="" />
     </div>
     <div class="chat-list-wrapper">
-        <div class={{styles.chat-item-wrapper}}>
-            <div class={{styles.chat-item-avatar-wrapper}}></div>
-            <div class={{styles.chat-item-data-wrapper}}>
-                <div class={{styles.chat-item-title-wrapper}}>
-                    <div class={{styles.chat-item-title-left}}>
-                        <p class={{styles.chat-item-title}}>Заголовок чата</p>
-                    </div>
-                    <div class={{styles.chat-item-title-right}}>
-                        <p class={{styles.chat-item-time}}>12:00</p>
-                    </div>
-                </div>
-                <div class={{styles.chat-item-last-message-wrapper}}>
-                    <div class={{styles.chat-item-last-message}}>
-                        <p>
-                            <b>Вы:</b> Друзья, у меня для вас особенный выпуск новостей!...
-                        </p>
-                    </div>
-                    <div class={{styles.chat-item-mention-wrapper}}>
-                        <span class={{styles.chat-item-mention}}>2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class={{styles.chat-item-wrapper}}>
-            <div class={{styles.chat-item-avatar-wrapper}}></div>
-            <div class={{styles.chat-item-data-wrapper}}>
-                <div class={{styles.chat-item-title-wrapper}}>
-                    <div class={{styles.chat-item-title-left}}>
-                        <p class={{styles.chat-item-title}}>Заголовок чата</p>
-                    </div>
-                    <div class={{styles.chat-item-title-right}}>
-                        <p class={{styles.chat-item-time}}>12:00</p>
+        {{#each chatsList as |chat|}}
+            {{#> chieldEntry}}
+                <div class={{../styles.chat-item-wrapper}}>
+                    <div class={{../styles.chat-item-avatar-wrapper}}></div>
+                    <div class={{../styles.chat-item-data-wrapper}}>
+                        <div class={{../styles.chat-item-title-wrapper}}>
+                            <div class={{../styles.chat-item-title-left}}>
+                                <p class={{../styles.chat-item-title}}>{{chat.title}}</p>
+                            </div>
+                            <div class={{../styles.chat-item-title-right}}>
+                                <time class={{../styles.chat-item-time}}>{{time}}</time>
+                            </div>
+                        </div>
+                        <div class={{../styles.chat-item-last-message-wrapper}}>
+                            <div class={{../styles.chat-item-last-message}}>
+                                <p>
+                                    <b>Вы:</b> {{message}}
+                                </p>
+                            </div>
+                            <div class={{../styles.chat-item-mention-wrapper}}>
+                                <span class={{../styles.chat-item-mention}}>{{bubble}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class={{styles.chat-item-last-message-wrapper}}>
-                    <div class={{styles.chat-item-last-message}}>
-                        <p>
-                            <b>Вы:</b> Друзья, у меня для вас особенный выпуск новостей!...
-                        </p>
-                    </div>
-                    <div class={{styles.chat-item-mention-wrapper}}>
-                        <span class={{styles.chat-item-mention}}>2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class={{styles.chat-item-wrapper}}>
-            <div class={{styles.chat-item-avatar-wrapper}}></div>
-            <div class={{styles.chat-item-data-wrapper}}>
-                <div class={{styles.chat-item-title-wrapper}}>
-                    <div class={{styles.chat-item-title-left}}>
-                        <p class={{styles.chat-item-title}}>Заголовок чата</p>
-                    </div>
-                    <div class={{styles.chat-item-title-right}}>
-                        <p class={{styles.chat-item-time}}>12:00</p>
-                    </div>
-                </div>
-                <div class={{styles.chat-item-last-message-wrapper}}>
-                    <div class={{styles.chat-item-last-message}}>
-                        <p>
-                            <b>Вы:</b> Друзья, у меня для вас особенный выпуск новостей!...
-                        </p>
-                    </div>
-                    <div class={{styles.chat-item-mention-wrapper}}>
-                        <span class={{styles.chat-item-mention}}>2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {{/chieldEntry}}
+        {{/each}}
     </div>
 </aside>
 <article class={{styles.main-content-wrapper}}>
