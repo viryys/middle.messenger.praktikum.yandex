@@ -6,7 +6,7 @@ body {
   margin: 0;
 }
 
-main {
+main, main > div {
   font-family: "PT Sans", sans-serif;
   position: relative;
   min-height: 100%;
@@ -15,8 +15,17 @@ main {
   flex-direction: column;
 }
 
+main > div {
+  align-items: stretch;
+  flex-grow: 1;
+}
+
 .login-wrapper, .error-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper > div, .error-wrapper > div {
   justify-content: center;
 }
