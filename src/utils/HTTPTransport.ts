@@ -17,12 +17,21 @@ function queryStringify(data) {
   return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
 }
 
-class HTTPTransport {
-  get = (url, options = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+export default class HTTPTransport {
+  get = (
+    url: string,
+    options = {},
+  ) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
 
-  post = (url, options = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+  post = (
+    url: string,
+    options = {},
+  ) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-  put = (url, options = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+  put = (
+    url: string,
+    options = {},
+  ) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
   delete = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 

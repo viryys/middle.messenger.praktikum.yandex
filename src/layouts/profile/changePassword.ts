@@ -3,7 +3,7 @@ import profileTemplate from "./change-password.hbs";
 import * as styles from "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
-import renderDOM from "../../utils/renderDOM";
+//import renderDOM from "../../utils/renderDOM";
 
 export default class ChangePassword extends Block {
   constructor() {
@@ -16,4 +16,4 @@ export default class ChangePassword extends Block {
   }
 }
 
-renderDOM("#root", new ChangePassword());
+//renderDOM("#root", new ChangePassword());

@@ -1,5 +1,5 @@
 import Block from "../../../utils/Block";
-import renderDOM from "../../../utils/renderDOM";
+//import renderDOM from "../../../utils/renderDOM";
 import compile from "../../../utils/compile";
 import signUpTemplate from "./signup.hbs";
 import * as styles from "../signin/signin.css";
@@ -429,4 +429,4 @@ export class SignUp extends Block {
   }
 }
 
-renderDOM("#root", new SignUp());
+//renderDOM("#root", new SignUp());

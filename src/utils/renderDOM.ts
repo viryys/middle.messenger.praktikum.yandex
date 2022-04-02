@@ -9,7 +9,6 @@ export default function renderDOM(query: string, block: Block) {
 
   root.innerHTML = "";
 
-  // Можно завязаться на реализации вашего класса Block
   root.appendChild(block.getContent());
 
   return root;

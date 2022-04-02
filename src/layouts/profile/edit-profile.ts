@@ -3,7 +3,7 @@ import editProfileTemplate from "./edit-profile.hbs";
 import * as styles from "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
-import renderDOM from "../../utils/renderDOM";
+//import renderDOM from "../../utils/renderDOM";
 
 export default class EditProfile extends Block {
   constructor() {
@@ -26,4 +26,4 @@ export default class EditProfile extends Block {
   }
 }
 
-renderDOM("#root", new EditProfile());
+//renderDOM("#root", new EditProfile());

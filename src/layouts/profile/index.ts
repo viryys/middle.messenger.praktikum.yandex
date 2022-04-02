@@ -3,7 +3,7 @@ import profileTemplate from "./profile.hbs";
 import * as styles from "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
-import renderDOM from "../../utils/renderDOM";
+//import renderDOM from "../../utils/renderDOM";
 
 export default class Profile extends Block {
   constructor() {
@@ -25,4 +25,4 @@ export default class Profile extends Block {
   }
 }
 
-renderDOM("#root", new Profile());
+//renderDOM("#root", new Profile());

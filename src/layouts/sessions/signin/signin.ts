@@ -5,7 +5,7 @@ import * as styles from "./signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
 import compile from "../../../utils/compile";
-import renderDOM from "../../../utils/renderDOM";
+//import renderDOM from "../../../utils/renderDOM";
 
 export class SignIn extends Block {
   constructor() {
@@ -154,4 +154,4 @@ export class SignIn extends Block {
   }
 }
 
-renderDOM("#root", new SignIn());
+//renderDOM("#root", new SignIn());

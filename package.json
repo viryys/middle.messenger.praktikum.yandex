@@ -5,8 +5,9 @@
   "scripts": {
     "eslint": "eslint ./src --ext .js,.ts",
     "dev": "parcel -p 3000 tpl/*.html",
-    "build": "rm -rf dist && parcel build tpl/index.html --no-cache --log-level verbose",
-    "start": "node ./server.js"
+    "server": "node server.js",
+    "build": "rm -rf dist && parcel build tpl/index.html --no-cache --log-level info",
+    "start": "npm run build && npm run server"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "repository": {
@@ -53,6 +54,7 @@
   },
   "dependencies": {
     "nanoid": "^3.2.0",
-    "parcel-plugin-handlebars": "^0.4.4"
+    "parcel-plugin-handlebars": "^0.4.4",
+    "path": "^0.12.7"
   }
 }

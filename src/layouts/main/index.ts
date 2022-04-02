@@ -7,8 +7,8 @@ import mainTemplate from "./main.hbs";
 import * as styles from "./main.css";
 import compile from "../../utils/compile";
 import Block from "../../utils/Block";
-import renderDOM from "../../utils/renderDOM";
-import hbs from "hbs";
+//import renderDOM from "../../utils/renderDOM";
+//import hbs from "hbs";
 
 export default class ChatPage extends Block {
   constructor() {
@@ -41,4 +41,4 @@ export default class ChatPage extends Block {
   }
 }
 
-renderDOM("#root", new ChatPage());
+//renderDOM("#root", new ChatPage());

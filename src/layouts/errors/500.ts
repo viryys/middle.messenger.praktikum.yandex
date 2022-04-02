@@ -3,7 +3,7 @@ import * as styles from "./errors.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 
-import renderDOM from "../../utils/renderDOM";
+//import renderDOM from "../../utils/renderDOM";
 
 export default class Error500 extends Block {
   constructor() {
@@ -16,4 +16,4 @@ export default class Error500 extends Block {
   }
 }
 
-renderDOM("#root", new Error500());
+//renderDOM("#root", new Error500());
