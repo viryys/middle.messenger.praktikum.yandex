@@ -2,9 +2,10 @@
 
 ## Описание
 - Данный проект является практическим, для повышения навыков front-end разработки
-- На данной стадии я разбил шаблоны страниц на компоненты. 
-- На странице Регистрация и Авторизация добавил валидацию полей
-- С помощью чата возможно будет общаться с другими людьми персонально, либо в публичном чате.
+- Подключил внешние API и WebSocket. 
+- Добавил логику на страницу Регистрации, Авторизации, Профиль (вывод данных), Редактирование профиля, Изменить пароль от аккаунта, Логаут.
+- Привязал часть функционала для чата: Вывод списка чатов и вывод списка постов.
+- Все страницы переходят без перезагрузки как SPA
 
 на данный момент скомпилированная версия сайта находится на публичном домене 
 [ссылка на проект](https://tatarchuk.netlify.app/)
@@ -14,20 +15,20 @@
 ## Установка
 Как установить проект локально:
 
-- `npm run build` — запуск версии для разработчика,
+- `npm run start` — запуск версии для разработчика,
 
 ## Примеры использования
 
 В данном модуле создано 8 страниц:
 
-- [Страница регистрации](https://tatarchuk.netlify.app/signup.html)
-- [Страница авторизации](https://tatarchuk.netlify.app/signin.html)
-- [Страница чата](https://tatarchuk.netlify.app/main.html)
-- [Страница профиля](https://tatarchuk.netlify.app/profile.html)
-- [Страница редактирования профиля](https://tatarchuk.netlify.app/edit-profile.html)
-- [Страница изменения пароля](https://tatarchuk.netlify.app/change-password.html)
-- [Ошибка 404](https://tatarchuk.netlify.app/404.html)
-- [Ошибка 500](https://tatarchuk.netlify.app/500.html)
+- [Страница регистрации](https://tatarchuk.netlify.app/signup)
+- [Страница авторизации](https://tatarchuk.netlify.app/signin)
+- [Страница чата](https://tatarchuk.netlify.app/chats)
+- [Страница профиля](https://tatarchuk.netlify.app/profile)
+- [Страница редактирования профиля](https://tatarchuk.netlify.app/profile/edit)
+- [Страница изменения пароля](https://tatarchuk.netlify.app/profile/change-password)
+- [Ошибка 404](https://tatarchuk.netlify.app/404)
+- [Ошибка 500](https://tatarchuk.netlify.app/500)
 
 ## Дизайн проекта
 
