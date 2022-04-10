@@ -4,7 +4,7 @@
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
     "eslint": "eslint ./src --ext .js,.ts",
-    "dev": "parcel -p 3001 tpl/index.html",
+    "dev": "parcel -p 3000 tpl/index.html",
     "server": "node server.js",
     "build": "parcel build tpl/index.html --no-cache --log-level info",
     "start": "npm run build && npm run server"
