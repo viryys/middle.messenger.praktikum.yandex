@@ -17,7 +17,7 @@ type Props = {
     click: CurrentElementEvent
 }}
 
-export default class Button extends Block {
+export class Button extends Block {
   constructor(props: Props) {
     super("div", props);
   }

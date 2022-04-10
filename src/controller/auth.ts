@@ -2,7 +2,7 @@ import AuthAPI from "../api/auth";
 import Store from "../utils/store";
 import Router from "../utils/router";
 
-export class AuthController {
+export default class AuthController {
   private authApi = new AuthAPI();
 
   private router = new Router("#root");

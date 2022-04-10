@@ -74,7 +74,7 @@ export default class Store {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop: string, value: unknown) {
+      set(target: State, prop: string, value: unknown) {
         target[prop] = value;
         if (prop === "isLogin" || prop === "user") {
           self.eventBus().emit(EVENTS.LOGIN_DU);

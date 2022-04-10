@@ -6,7 +6,7 @@ import Store from "../../utils/store";
 import BackButton from "../../components/backButton";
 import { handlerButtonBackClick } from "../../utils/helpers";
 import Link from "../../components/link";
-import { AuthController } from "../../controller/auth";
+import AuthController from "../../controller/auth";
 import Router from "../../utils/router";
 
 type Props = {
@@ -21,63 +21,106 @@ export const isEmpty = (obj) => {
   return false;
 };
 
+const backButton = new BackButton({
+  events: {
+    click: {
+      currentEl: "#backBtn",
+      func: handlerButtonBackClick,
+    },
+  },
+});
+
+const authController = new AuthController();
+
+const router = new Router("#root");
+
+const editProfile = new Link({
+  wrapperClassName: styles.profileStringLeft,
+  id: "editProfile",
+  title: "Изменить данные",
+  className: styles.link,
+  link: "/profile/edit",
+  events: {
+    click: {
+      currentEl: "#editProfile",
+      func: (el) => {
+        el.preventDefault();
+
+        router.go("/profile/edit");
+      },
+    },
+  },
+});
+
+const changePassword = new Link({
+  wrapperClassName: styles.profileStringLeft,
+  id: "changePassword",
+  title: "Изменить пароль",
+  className: styles.link,
+  link: "/profile/change-password",
+  events: {
+    click: {
+      currentEl: "#changePassword",
+      func: (el) => {
+        el.preventDefault();
+
+        router.go("/profile/change-password");
+      },
+    },
+  },
+});
+
+const logout = new Link({
+  wrapperClassName: styles.profileStringLeft,
+  id: "logout",
+  title: "Выйти",
+  className: `${styles.link} ${styles.warn}`,
+  link: "/logout",
+  events: {
+    click: {
+      currentEl: "#logout",
+      func: (el) => {
+        el.preventDefault();
+
+        authController.logout()
+          .then(() => {
+            router.go("/");
+          });
+      },
+    },
+  },
+});
+
+const store = new Store();
+
+const appStore = store.getState();
+
 export default class Profile extends Block {
-  private store = new Store();
-
-  private appStore = this.store.getState();
-
-  private authController = new AuthController();
-
-  private router = new Router("#root");
-
   constructor(props: Props) {
     super("div", props);
 
-    this.store.setListener(this.updateStore.bind(this), "LOGIN");
+    store.setListener(this.updateStore.bind(this), "LOGIN");
   }
 
   updateStore() {
-    this.appStore = this.store.getState();
-
     this.setProps({ updated: !this.props.updated });
   }
 
   protected render(): DocumentFragment {
     // eslint-disable-next-line no-mixed-operators
-    const user = this.appStore && this.appStore.user || {};
+    const user = appStore && appStore.user || {};
+    const avatar = user.avatar
+      ? `https://ya-praktikum.tech/${user.avatar}`
+      : "/img/default-avatar.svg";
 
-    const backButton = new BackButton({
-      events: {
-        click: {
-          currentEl: "#backBtn",
-          func: handlerButtonBackClick,
-        },
-      },
-    });
-
-    const logout = new Link({
-      wrapperClassName: styles.profileStringLeft,
-      id: "logout",
-      title: "Выйти",
-      className: `${styles.link} ${styles.warn}`,
-      events: {
-        click: {
-          currentEl: "#logout",
-          func: (el) => {
-            el.preventDefault();
-
-            this.authController.logout()
-              .then(() => {
-                this.router.go("/");
-              });
-          },
-        },
-      },
-    });
+    console.log("profile render", user, user.avatar);
 
     const data = {
       ...user,
+      avatar,
       backButton,
+      changePassword,
+      editProfile,
       logout,
       styles,
     };

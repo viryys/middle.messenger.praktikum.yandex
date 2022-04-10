@@ -3,13 +3,14 @@ import SignIn from "./layouts/sessions/signin";
 import SignUp from "./layouts/sessions/signup";
 import Profile from "./layouts/profile";
 import EditProfile from "./layouts/profile/edit-profile";
-import ChangePassword from "./layouts/profile/changePassword";
+import { ChangePassword } from "./layouts/profile/changePassword";
 import ChatPage from "./layouts/main";
 import Error404 from "./layouts/errors/404";
 import Error500 from "./layouts/errors/500";
 import Store from "./utils/store";
-import { AuthController } from "./controller/auth";
+import AuthController from "./controller/auth";
 import ChatsController from "./controller/chats";
+import WebSocketApp from "./utils/webSocket";
 
 document.addEventListener("DOMContentLoaded", () => {
   const router = new Router("#root");
@@ -50,6 +51,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const wsStart = () => {
+    if (appStore.token) {
+      const ws = new WebSocketApp(
+        appStore.user,
+        appStore.currentChat,
+        appStore.token,
+      );
+      store.setState({ ws });
+    }
+  };
+
   store.setListener(startRouter, "LOGIN");
   store.setListener(startRouter, "CHATS");
+  store.setListener(wsStart, "TOKEN");
 });

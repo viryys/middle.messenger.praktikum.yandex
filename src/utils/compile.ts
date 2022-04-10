@@ -5,6 +5,19 @@ export default function compile(tmpl: (ctx: any) => string, props: any): Documen
   const components: Record<string, Block> = {};
 
   Object.entries(props).forEach(([name, value]) => {
+
+    if (Array.isArray(value)) {
+
+      for (let i = 0; i < value.length; i++) {
+        if (value[i] instanceof Block) {
+          components[value[i].id] = value[i];
+
+          // eslint-disable-next-line no-param-reassign
+          props[name][i] = `<div id="id-${value[i].id}"></div>`;
+        }
+      }
+    }
+
     if (value instanceof Block) {
       components[value.id] = value;
 

@@ -11,32 +11,30 @@ import Button, { Types } from "../../components/button";
 import ErrorResponse from "../../components/error";
 import UserAPI from "../../api/users";
 import { Event } from "../../utils/types";
-import Router from "../../utils/router";
+import AuthController from "../../controller/auth";
+
+const store = new Store();
+const authController = new AuthController();
+const appStore = store.getState();
 
 export default class EditProfile extends Block {
-  protected store = new Store();
-
-  private appStore = this.store.getState();
-
   private userApi = new UserAPI();
 
-  private router = new Router();
+  private user: any = null;
 
   constructor() {
     super("div");
-
-    this.store.setListener(this.updateStore.bind(this), "LOGIN");
   }
 
-  updateStore() {
-    this.appStore = this.store.getState();
+  componentDidMount(oldProps: any) {
+    super.componentDidMount(oldProps);
 
-    this.setProps({ updated: !this.props.updated });
+    console.log("edit profile", store, appStore);
   }
 
   protected render(): DocumentFragment {
     // eslint-disable-next-line no-mixed-operators
-    const user = this.appStore && this.appStore.user || null;
+    const user = appStore && appStore.user || null;
 
     const backButton = new BackButton({
       events: {
@@ -340,6 +338,8 @@ export default class EditProfile extends Block {
                       message: "Данные успешно сохранены",
                       errorClassName: styles.success,
                     });
+
+                    authController.getCurrentUser();
                   } else {
                     const result = JSON.parse(res.response);
 
@@ -358,6 +358,10 @@ export default class EditProfile extends Block {
       },
     });
 
+    const avatar = user && user.avatar
+      ? `https://ya-praktikum.tech/${user.avatar}`
+      : "/img/default-avatar.svg";
+
     const data = {
       inputEmail,
       inputLogin,
@@ -367,6 +371,7 @@ export default class EditProfile extends Block {
       inputPhone,
       button,
       errorResponse,
+      avatar,
       backButton,
       styles,
     };

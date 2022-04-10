@@ -5,8 +5,9 @@ import compile from "../../utils/compile";
 type Props = {
   title: string,
   id: string,
-  className:string,
-  wrapperClassName:string,
+  className: string,
+  wrapperClassName: string,
+  link?: string
   events?: {
     click: CurrentElementEvent
   }}

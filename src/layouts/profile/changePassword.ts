@@ -11,14 +11,27 @@ import Button, { Types } from "../../components/button";
 import ErrorResponse from "../../components/error";
 import UserAPI from "../../api/users";
 import Router from "../../utils/router";
+import Store from "../../utils/store";
 
-export default class ChangePassword extends Block {
-  protected userApi = new UserAPI();
+const store = new Store();
+const appStore = store.getState();
 
-  protected router = new Router("#root");
+export class ChangePassword extends Block {
+  private userApi = new UserAPI();
+
+  private router = new Router("#root");
 
   constructor() {
-    super("div");
+    super("div", {
+      user: {},
+    });
+
+    this.props.user = appStore.user;
+    store.setListener(this.updateStore.bind(this), "LOGIN");
+  }
+
+  updateStore() {
+    this.setProps({ user: appStore.user });
   }
 
   protected render(): DocumentFragment {
@@ -110,7 +123,7 @@ export default class ChangePassword extends Block {
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
             ];
-            const validateInput = this.validatePassword(inputVal, validateRules);
+            const validateInput = validateInputForm(inputVal, validateRules);
 
             inputRepeatPassword.setProps({
               value: inputVal,
@@ -223,6 +236,10 @@ export default class ChangePassword extends Block {
       },
     });
 
+    const avatar = this.props.user && this.props.user.avatar
+      ? `https://ya-praktikum.tech/${this.props.user.avatar}`
+      : "/img/default-avatar.svg";
+
     return compile(profileTemplate, {
       button,
       inputOldPassword,
@@ -230,6 +247,7 @@ export default class ChangePassword extends Block {
       inputRepeatPassword,
       backButton,
       errorResponse,
+      avatar,
       styles,
     });
   }

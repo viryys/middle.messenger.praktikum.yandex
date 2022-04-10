@@ -1,15 +1,26 @@
-import Block, { CurrentElementEvent } from "../../utils/Block";
+import Block from "../../utils/Block";
 import * as styles from "../../layouts/main/main.css";
 import compile from "../../utils/compile";
 import template from "./chatsList.hbs";
 import ChatItem from "../chatItem/chatItem";
+import { Event } from "../../utils/types";
+import Store from "../../utils/store";
+import ChatsController from "../../controller/chats";
 
 type Props = {
   chats: [],
-  }
+}
 
-function handleChatItemClick() {
-  console.log("click chat item");
+const store = new Store();
+const chatController = new ChatsController();
+
+function handleChatItemClick(event: Event) {
+  const { currentTarget } = event;
+  const chatId = +currentTarget.getAttribute("data-id");
+
+  store.setState({ currentChat: chatId });
+  chatController.getChatToken(chatId);
+  console.log("click chat item", chatId);
 }
 
 export default class ChatsList extends Block {
@@ -25,6 +36,12 @@ export default class ChatsList extends Block {
       chatsList = chats.reduce((accumulator, chat: any, index: number) => {
         const chatItem = new ChatItem({
           ...chat,
+          events: {
+            click: {
+              currentEl: "._main__chat-item-wrapper",
+              func: handleChatItemClick,
+            },
+          },
         });
 
         accumulator[index] = chatItem;

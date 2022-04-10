@@ -5,7 +5,7 @@
     <article class={{styles.mainContent}}>
         <div class={{styles.profileWrapper}}>
             <div class={{styles.defaultAvatar}}>
-                <img src="/img/default-avatar.svg" alt="Нет аватара">
+                <img src="{{avatar}}" alt="Нет аватара">
             </div>
             <h2 class={{styles.firstName}}>Профиль пользователя</h2>
             <div class={{styles.profileStringsWrapper}}>
@@ -36,14 +36,10 @@
             </div>
             <nav class={{styles.profileStringsMenu}}>
                 <div class={{styles.profileString}}>
-                    <div class={{styles.profileStringLeft}}>
-                        <a class={{styles.link}} href="/profile/edit">Изменить данные</a>
-                    </div>
+                    {{{editProfile}}}
                 </div>
                 <div class={{styles.profileString}}>
-                    <div class={{styles.profileStringLeft}}>
-                        <a class={{styles.link}} href="/profile/change-password">Изменить пароль</a>
-                    </div>
+                    {{{changePassword}}}
                 </div>
                 <div class={{styles.profileString}}>
                     {{{logout}}}
