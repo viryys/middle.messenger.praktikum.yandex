@@ -5,19 +5,23 @@ const METHODS = {
   DELETE: "DELETE",
 };
 
-// Самая простая версия. Реализовать штучку со всеми проверками им предстоит в конце спринта
-// Необязательный метод
 function queryStringify(data) {
   if (typeof data !== "object") {
     throw new Error("Data must be object");
   }
 
-  // Здесь достаточно и [object Object] для объекта
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
+  return keys.reduce(
+    (
+      result,
+      key,
+      index,
+    ) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
 }
 
 export default class HTTPTransport {
+  private baseUrl: string = "https://ya-praktikum.tech/api/v2";
+
   get = (
     url: string,
     options = {},
@@ -33,10 +37,19 @@ export default class HTTPTransport {
     options = {},
   ) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-  delete = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+  delete = (
+    url,
+    options = {},
+  ) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url, options = {}, timeout = 5000) => {
-    const { headers = {}, method, data } = options;
+    const {
+      headers = {
+        "content-type": "application/json",
+      },
+      method,
+      data,
+    } = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -50,9 +63,10 @@ export default class HTTPTransport {
       xhr.open(
         method,
         isGet && !!data
-          ? `${url}${queryStringify(data)}`
-          : url,
+          ? `${this.baseUrl}${url}${queryStringify(data)}`
+          : `${this.baseUrl}${url}`,
       );
+      xhr.withCredentials = true;
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
@@ -71,7 +85,7 @@ export default class HTTPTransport {
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   };

@@ -1,40 +1,15 @@
 <div class={{styles.main-wrapper}}>
 <aside class={{styles.left-block-wrapper}}>
     <div class={{styles.profile-link-wrapper}}>
-        <a href="/profile.html">Профиль {{{arrow}}}</a>
+        <a href="/profile">Профиль {{{arrow}}}</a>
     </div>
     <div class={{styles.search-chat-list}}>
         {{{zoom}}}
         <input type="text" placeholder="Поиск чатов" value="" />
     </div>
+    {{{chatsList}}}
     <div class="chat-list-wrapper">
-        {{#each chatsList as |chat|}}
-            {{#> chieldEntry}}
-                <div class={{../styles.chat-item-wrapper}}>
-                    <div class={{../styles.chat-item-avatar-wrapper}}></div>
-                    <div class={{../styles.chat-item-data-wrapper}}>
-                        <div class={{../styles.chat-item-title-wrapper}}>
-                            <div class={{../styles.chat-item-title-left}}>
-                                <p class={{../styles.chat-item-title}}>{{chat.title}}</p>
-                            </div>
-                            <div class={{../styles.chat-item-title-right}}>
-                                <time class={{../styles.chat-item-time}}>{{time}}</time>
-                            </div>
-                        </div>
-                        <div class={{../styles.chat-item-last-message-wrapper}}>
-                            <div class={{../styles.chat-item-last-message}}>
-                                <p>
-                                    <b>Вы:</b> {{message}}
-                                </p>
-                            </div>
-                            <div class={{../styles.chat-item-mention-wrapper}}>
-                                <span class={{../styles.chat-item-mention}}>{{bubble}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {{/chieldEntry}}
-        {{/each}}
+
     </div>
 </aside>
 <article class={{styles.main-content-wrapper}}>

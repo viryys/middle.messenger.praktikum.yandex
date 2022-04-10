@@ -4,15 +4,27 @@ import signInTemplate from "./signin.hbs";
 import * as styles from "./signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
+import ErrorResponse from "../../../components/error";
 import compile from "../../../utils/compile";
-//import renderDOM from "../../../utils/renderDOM";
+import Router from "../../../utils/router";
+import AuthAPI from "../../../api/auth";
 
 export class SignIn extends Block {
+  private authApi = new AuthAPI();
+
+  private router = new Router("#root");
+
   constructor() {
     super("div");
   }
 
   protected render(): DocumentFragment {
+    const errorResponse = new ErrorResponse({
+      wrapperClassName: styles.inputGroup,
+      errorClassName: styles.error,
+      message: "",
+    });
+
     const inputLogin = new Input({
       wrapperClassName: styles.inputGroup,
       id: "login",
@@ -139,6 +151,29 @@ export class SignIn extends Block {
               };
 
               console.log("SubmitData", allData);
+
+              this.authApi.signIn(allData)
+                .then((res: XMLHttpRequest) => {
+
+                  if (res.status === 200) {
+
+                    this.router.go("/chats");
+
+                    errorResponse.setProps({
+                      message: "",
+                    });
+                  } else {
+                    const result = JSON.parse(res.response);
+
+                    errorResponse.setProps({
+                      errorClassName: styles.success,
+                      message: result.reason,
+                    });
+                  }
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             }
           },
         },
@@ -149,9 +184,8 @@ export class SignIn extends Block {
       button,
       inputLogin,
       inputPassword,
+      errorResponse,
       styles,
     });
   }
 }
-
-//renderDOM("#root", new SignIn());

@@ -15,4 +15,3 @@ export default class Error404 extends Block {
   }
 }
 
-//renderDOM("#root", new Error404());

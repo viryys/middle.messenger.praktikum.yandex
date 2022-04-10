@@ -1,28 +1,22 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import template from "./button.hbs";
+import * as styles from "../../layouts/main/main.css";
 import compile from "../../utils/compile";
-
-export enum Types {
-  Submit = "submit",
-  Reset = "reset",
-  Button = "button"
-}
+import template from "./chatItem.hbs";
 
 type Props = {
   title: string,
   id: string,
-  className:string,
-  type: Types,
+  avatar: string,
   events?: {
     click: CurrentElementEvent
-}}
+  }}
 
-export default class Button extends Block {
+export default class ChatItem extends Block {
   constructor(props: Props) {
     super("div", props);
   }
 
   render() {
-    return compile(template, { ...this.props });
+    return compile(template, { styles, ...this.props });
   }
 }

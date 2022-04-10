@@ -17,10 +17,10 @@ export enum TypesInput {
 type Props = {
   wrapperClassName: string,
     id: string,
-    labelName:string,
+    labelName?: string,
     type: TypesInput,
-    placeholder:string,
-    inputName:string,
+    placeholder: string,
+    inputName: string,
     value: string,
     events?: {
       focus?: CurrentElementEvent,

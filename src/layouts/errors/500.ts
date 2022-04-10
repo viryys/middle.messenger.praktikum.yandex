@@ -16,4 +16,3 @@ export default class Error500 extends Block {
   }
 }
 
-//renderDOM("#root", new Error500());

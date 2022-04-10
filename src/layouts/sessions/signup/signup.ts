@@ -1,18 +1,32 @@
 import Block from "../../../utils/Block";
-//import renderDOM from "../../../utils/renderDOM";
+
 import compile from "../../../utils/compile";
 import signUpTemplate from "./signup.hbs";
 import * as styles from "../signin/signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
+import ErrorResponse from "../../../components/error";
 import Validate from "../../../utils/validate";
+import Router from "../../../utils/router";
+
+import AuthAPI from "../../../api/auth";
+
+const router = new Router("#root");
 
 export class SignUp extends Block {
+  private authApi = new AuthAPI();
+
   constructor() {
     super("div");
   }
 
   protected render(): DocumentFragment {
+    const errorResponse = new ErrorResponse({
+      wrapperClassName: styles.inputGroup,
+      errorClassName: styles.error,
+      message: "",
+    });
+
     const inputEmail = new Input({
       wrapperClassName: styles.inputGroup,
       id: "email",
@@ -408,7 +422,31 @@ export class SignUp extends Block {
                 password: inputPassword.getValue(),
               };
 
-              console.log("SumbitData", allData);
+              this.authApi.signUp(allData)
+                .then((res) => {
+                  const result = JSON.parse(res.response);
+
+                  if (res.status === 200) {
+                    console.log("success SignUp");
+
+                    errorResponse.setProps({
+                      message: "Аккаунт успешно создался. Введите свои данные в форму авторизации",
+                      errorClassName: styles.success,
+                    });
+
+                    setTimeout(() => {
+                      router.go("/");
+                    }, 5000);
+                  } else {
+                    errorResponse.setProps({
+                      message: result.reason,
+                    });
+                    console.log(res.status, result.reason);
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }
           },
         },
@@ -424,6 +462,7 @@ export class SignUp extends Block {
       inputPassword,
       inputRepeatPassword,
       button,
+      errorResponse,
       styles,
     });
   }

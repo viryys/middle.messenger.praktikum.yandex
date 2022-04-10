@@ -1,8 +1,6 @@
 <div class={{styles.wrapper}}>
     <div class={{styles.assetLeft}}>
-        <a class={{styles.buttonBack}} href="/main.html">
-            <span id="backSVG">{{{backSvg}}}</span>
-        </a>
+        {{{backButton}}}
     </div>
     <article class={{styles.mainContent}}>
         <div class={{styles.profileWrapper}}>
@@ -13,42 +11,31 @@
             <div class={{styles.profileStringsWrapper}}>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Почта</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Введите почту" value={{email}} name="email">
-                    </div>
+                    {{{inputEmail}}}
                 </div>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Логин</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Новый логин" value={{login}} name="login">
-                    </div>
+                    {{{inputLogin}}}
                 </div>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Имя</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Изменить имя" name="first_name" value={{first_name}}>
-                    </div>
+                    {{{inputFirstName}}}
                 </div>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Фамилия</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Изменить фамилию" name="second_name" value={{second_name}}>
-                    </div>
+                    {{{inputSecondName}}}
                 </div>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Имя в чате</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Измените имя в чате" name="display_name" value={{display_name}}>
-                    </div>
+                    {{{inputDisplayName}}}
                 </div>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Телефон</div>
-                    <div class={{styles.profileStringRight}}>
-                        <input type="text" placeholder="Измените телефон" name="phone" value={{phone}}>
-                    </div>
+                    {{{inputPhone}}}
                 </div>
             </div>
-            <a href="/main.html" class={{styles.button}}>Сохранить</a>
+            {{{button}}}
+            {{{errorResponse}}}
         </div>
     </article>
 </div>

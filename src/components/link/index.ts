@@ -1,23 +1,17 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import template from "./button.hbs";
+import template from "./link.hbs";
 import compile from "../../utils/compile";
-
-export enum Types {
-  Submit = "submit",
-  Reset = "reset",
-  Button = "button"
-}
 
 type Props = {
   title: string,
   id: string,
   className:string,
-  type: Types,
+  wrapperClassName:string,
   events?: {
     click: CurrentElementEvent
-}}
+  }}
 
-export default class Button extends Block {
+export default class Link extends Block {
   constructor(props: Props) {
     super("div", props);
   }

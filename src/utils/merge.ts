@@ -22,4 +22,4 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return lhs;
 }
 
-export default merge
+export default merge;

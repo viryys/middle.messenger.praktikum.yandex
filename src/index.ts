@@ -7,16 +7,49 @@ import ChangePassword from "./layouts/profile/changePassword";
 import ChatPage from "./layouts/main";
 import Error404 from "./layouts/errors/404";
 import Error500 from "./layouts/errors/500";
+import Store from "./utils/store";
+import { AuthController } from "./controller/auth";
+import ChatsController from "./controller/chats";
 
-const router = new Router("#root");
+document.addEventListener("DOMContentLoaded", () => {
+  const router = new Router("#root");
+  const store = new Store();
+  const appStore = store.getState();
+  const authController = new AuthController();
+  const chatsController = new ChatsController();
 
-router
-  .use("/", SignIn)
-  .use("/signup", SignUp)
-  .use("/profile", Profile)
-  .use("/edit", EditProfile)
-  .use("/change-password", ChangePassword)
-  .use("/chats", ChatPage)
-  .use("/404", Error404)
-  .use("/500", Error500)
-  .start();
+  authController.getCurrentUser().then(
+    () => {
+      chatsController.getChats().then(() => {
+        console.log("store.getState", store.getState());
+
+        router
+          .use("/", SignIn)
+          .use("/signin", SignIn)
+          .use("/signup", SignUp)
+          .use("/profile", Profile)
+          .use("/profile/edit", EditProfile)
+          .use("/profile/change-password", ChangePassword)
+          .use("/chats", ChatPage)
+          .use("/404", Error404)
+          .use("/500", Error500)
+          .start();
+      });
+    },
+  );
+
+  const startRouter = () => {
+    console.log("startRouter", appStore, appStore.user);
+    if (appStore.isLogin) {
+      // eslint-disable-next-line no-restricted-globals
+      if (location.pathname === "/" || location.pathname === "/signup") {
+        router.go("/chats");
+      }
+    } else {
+      router.go("/");
+    }
+  };
+
+  store.setListener(startRouter, "LOGIN");
+  store.setListener(startRouter, "CHATS");
+});
