@@ -4,15 +4,14 @@ import compile from "../../utils/compile";
 import ChatPostLeft from "../chatPostLeft/chatPostLeft";
 import ChatPostRight from "../chatPostRight/chatPostRight";
 import Store from "../../utils/store";
+import * as styles from "../../layouts/main/main.css";
 
 const store = new Store();
 const appStore = store.getState();
 
 export default class ChatPosts extends Block {
-  constructor() {
-    super("div", {
-      messages: [],
-    });
+  constructor(props, classNameMain) {
+    super("div", props, classNameMain);
 
     store.setListener(this.componentDidMount.bind(this), "CHATS");
     store.setListener(this.componentDidMount.bind(this), "MESSAGES");
@@ -29,15 +28,13 @@ export default class ChatPosts extends Block {
     const { user, messages } = this.props;
     let messagesList = [];
 
-    console.log("rerender", messages);
-
     if (messages.length > 0 && user && user.id) {
       messagesList = messages.reduce(
         (accumulator, message: any, index: number) => {
           if (user.id !== message.user_id) {
-            accumulator[index] = new ChatPostLeft({ message });
+            accumulator[index] = new ChatPostLeft({ message }, styles["message-others-wrapper"]);
           } else {
-            accumulator[index] = new ChatPostRight({ message });
+            accumulator[index] = new ChatPostRight({ message }, styles["message-yours-wrapper"]);
           }
 
           return accumulator;

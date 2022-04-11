@@ -1,4 +1,3 @@
-<div class={{styles.main-wrapper}}>
 <aside class={{styles.left-block-wrapper}}>
     {{{linkProfile}}}
     <div class={{styles.search-chat-list}}>
@@ -6,16 +5,15 @@
         <input type="text" placeholder="Поиск чатов" value="" />
     </div>
     {{{chatsList}}}
-    <div class="chat-list-wrapper">
+    <div class="">
 
     </div>
 </aside>
 <article class={{styles.main-content-wrapper}}>
     {{#if currentChat}}
         {{{chatTitle}}}
-        <div class={{styles.main-chat-content}}>
-            {{{chatPosts}}}
-        </div>
+        {{{chatPosts}}}
+
         <div class={{styles.main-chat-footer}}>
             <div class={{styles.btn-left}}>{{{clip}}}</div>
             <div class={{styles.message-input-wrapper}}>
@@ -27,4 +25,3 @@
         {{{chatNotice}}}
     {{/if}}
 </article>
-</div>

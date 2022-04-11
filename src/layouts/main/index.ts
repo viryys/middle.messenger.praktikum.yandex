@@ -43,7 +43,7 @@ export default class ChatPage extends Block {
     super("div", {
       chats: [],
       currentChat: null,
-    });
+    }, styles["main-wrapper"]);
 
     this.props.chats = appStore.chats;
     store.setListener(this.updateStore.bind(this), "CHATS");
@@ -73,7 +73,7 @@ export default class ChatPage extends Block {
 
   protected render(): DocumentFragment {
     const { chats, currentChat } = this.props;
-    const { chatMessages, user } = appStore;
+    const { chatMessages } = appStore;
     const chatsList = new ChatsList({
       chats,
     });
@@ -81,12 +81,12 @@ export default class ChatPage extends Block {
     const chatTitle = new ChatTitle({
       chats,
       currentChat,
-    });
+    }, styles["main-chat-top"]);
 
-    const chatPosts = new ChatPosts({
-      messages: chatMessages,
-      user,
-    });
+    const chatPosts = new ChatPosts(
+      { messages: chatMessages },
+      styles["main-chat-content"],
+    );
 
     const data = {
       styles,

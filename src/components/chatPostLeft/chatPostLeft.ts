@@ -8,8 +8,8 @@ type Props = {
 }
 
 export default class ChatPostLeft extends Block {
-  constructor(props: Props) {
-    super("div", props);
+  constructor(props: Props, classNameMain) {
+    super("div", props, classNameMain);
   }
 
   render() {

@@ -4,12 +4,12 @@ import compile from "../../utils/compile";
 import * as styles from "../../layouts/main/main.css";
 
 type Props = {
-  message: any
+  message: any,
 }
 
 export default class ChatPostRight extends Block {
-  constructor(props: Props) {
-    super("div", props);
+  constructor(props: Props, classNameMain) {
+    super("div", props, classNameMain);
   }
 
   render() {

@@ -3,19 +3,15 @@ import * as styles from "../../layouts/main/main.css";
 import dot from "bundle-text:../../../static/img/dot.svg";
 import compile from "../../utils/compile";
 import template from "./chatTitle.hbs";
-import Store from "../../utils/store";
-import ChatsController from "../../controller/chats";
 
 type Props = {
   chats: [],
   currentChat: number
 }
 
-const chatController = new ChatsController();
-
 export default class ChatTitle extends Block {
-  constructor(props: Props) {
-    super("div", props);
+  constructor(props: Props, classNameMain) {
+    super("div", props, classNameMain);
   }
 
   render() {

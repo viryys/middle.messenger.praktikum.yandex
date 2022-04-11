@@ -4,7 +4,8 @@ import { Nullable, Values } from "./types";
 
 interface BlockMeta<P = any> {
   tagName: string;
-  props: P
+  props: P,
+  classNameMain?: string,
 }
 
 // eslint-disable-next-line no-shadow
@@ -35,15 +36,17 @@ export default class Block<P = any> {
   /** JSDoc
    * @param {string} tagName
    * @param {Object} props
+   * @param {string} classNameMain
    *
    * @returns {void}
    */
-  public constructor(tagName: string, props?: P) {
+  public constructor(tagName: string, props?: P, classNameMain?: string) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
       tagName,
       props,
+      classNameMain,
     };
 
     this.props = this._makePropsProxy(props || {} as P);
@@ -62,8 +65,8 @@ export default class Block<P = any> {
   }
 
   _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
+    const { tagName, classNameMain } = this._meta;
+    this._element = this._createDocumentElement(tagName, classNameMain);
   }
 
   init() {
@@ -184,8 +187,13 @@ export default class Block<P = any> {
     });
   }
 
-  _createDocumentElement(tagName: string) {
+  _createDocumentElement(tagName: string, classNameMain?: string) {
     const element = document.createElement(tagName);
+
+    console.log("classNameMain", classNameMain);
+    if (classNameMain) {
+      element.classList.add(classNameMain);
+    }
 
     return element;
   }
