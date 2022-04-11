@@ -451,7 +451,7 @@ export class SignUp extends Block {
           },
         },
       },
-    });
+    }, "");
 
     return compile(signUpTemplate, {
       inputEmail,

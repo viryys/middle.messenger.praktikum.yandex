@@ -28,8 +28,6 @@ export default class ChatsController {
     try {
       this.chatsApi.getChatToken(chatId)
         .then((res: XMLHttpRequest) => {
-          console.log(res.response);
-
           if (res.status === 200) {
             const response = JSON.parse(res.response);
 

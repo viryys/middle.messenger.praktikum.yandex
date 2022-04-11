@@ -20,7 +20,6 @@ function handleChatItemClick(event: Event) {
 
   store.setState({ currentChat: chatId });
   chatController.getChatToken(chatId);
-  console.log("click chat item", chatId);
 }
 
 export default class ChatsList extends Block {

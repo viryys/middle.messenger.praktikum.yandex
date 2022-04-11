@@ -16,10 +16,8 @@
 
         <div class={{styles.main-chat-footer}}>
             <div class={{styles.btn-left}}>{{{clip}}}</div>
-            <div class={{styles.message-input-wrapper}}>
-                <textarea name="message" class={{styles.message-input}}></textarea>
-            </div>
-            <div class={{styles.btn-right}}>{{{back}}}</div>
+            {{{message}}}
+            {{{sendMessageButton}}}
         </div>
     {{else}}
         {{{chatNotice}}}

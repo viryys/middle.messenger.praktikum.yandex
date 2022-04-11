@@ -24,8 +24,6 @@ export default class ChatTitle extends Block {
       }
     });
 
-    console.log("currentChatInfo", currentChatInfo);
-
     return compile(template, {
       styles,
       ...this.props,

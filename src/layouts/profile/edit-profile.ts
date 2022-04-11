@@ -356,7 +356,7 @@ export default class EditProfile extends Block {
           },
         },
       },
-    });
+    }, "");
 
     const avatar = user && user.avatar
       ? `https://ya-praktikum.tech/${user.avatar}`

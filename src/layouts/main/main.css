@@ -294,3 +294,9 @@
   font-size: 18px;
   text-align: center;
 }
+
+.btnSubmit {
+  background: transparent;
+  border: none;
+  color: white;
+}

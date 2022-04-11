@@ -188,7 +188,7 @@ export class SignIn extends Block {
           },
         },
       },
-    });
+    }, "");
 
     return compile(signInTemplate, {
       button,

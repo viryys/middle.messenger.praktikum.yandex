@@ -51,7 +51,7 @@ export default class WebSocketApp {
           type: WS_TYPE.Ping,
         }),
       );
-    }, 9000);
+    }, 20000);
   }
 
   startListener() {

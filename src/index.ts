@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const startRouter = () => {
-    console.log("startRouter", appStore, appStore.user);
     if (appStore.isLogin) {
       // eslint-disable-next-line no-restricted-globals
       if (location.pathname === "/" || location.pathname === "/signup") {

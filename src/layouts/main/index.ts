@@ -13,6 +13,10 @@ import Link from "../../components/link";
 import Router from "../../utils/router";
 import ChatTitle from "../../components/chatTitle/chatTitle";
 import ChatPosts from "../../components/chatPosts/chatPosts";
+import SendMessageInput from "../../components/sendMessageInput";
+import Button, { Types } from "../../components/button";
+import { WS_TYPE } from "../../utils/webSocket";
+import { Event } from "../../utils/types";
 
 const store = new Store();
 const appStore = store.getState();
@@ -47,28 +51,13 @@ export default class ChatPage extends Block {
 
     this.props.chats = appStore.chats;
     store.setListener(this.updateStore.bind(this), "CHATS");
-
-    console.log("constructor");
   }
 
   updateStore() {
-    console.log("chats update", appStore);
-
     this.setProps({
       chats: appStore.chats,
       currentChat: appStore.currentChat,
     });
-  }
-
-  componentDidMount(oldProps: any) {
-    super.componentDidMount(oldProps);
-
-    console.log("componentDidMount");
-  }
-
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
-    console.log("componentDidMount");
-    return super.componentDidUpdate(oldProps, newProps);
   }
 
   protected render(): DocumentFragment {
@@ -88,6 +77,36 @@ export default class ChatPage extends Block {
       styles["main-chat-content"],
     );
 
+    const message = new SendMessageInput({
+      id: "sendMessage",
+      name: "message",
+      value: "",
+      placeholder: "Введите сообщение",
+    });
+
+    const sendMessageButton = new Button({
+      title: `${backSvg}`,
+      id: "submitMessage",
+      type: Types.Button,
+      className: styles.btnSubmit,
+      events: {
+        click: {
+          currentEl: "#submitMessage",
+          func: (ev: Event) => {
+            ev.preventDefault();
+
+            // @ts-ignore
+            const getMessage = document.getElementById("sendMessage").value;
+
+            const { ws } = appStore;
+            if (getMessage) {
+              ws.send(getMessage, WS_TYPE.Message);
+            }
+          },
+        },
+      },
+    }, styles["btn-right"]);
+
     const data = {
       styles,
       zoom,
@@ -97,8 +116,9 @@ export default class ChatPage extends Block {
       chatTitle,
       currentChat,
       chatPosts,
+      message,
+      sendMessageButton,
       linkProfile,
-      back: backSvg,
     };
 
     return compile(mainTemplate, data);

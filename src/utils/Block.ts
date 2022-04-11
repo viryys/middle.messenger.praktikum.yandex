@@ -66,7 +66,7 @@ export default class Block<P = any> {
 
   _createResources() {
     const { tagName, classNameMain } = this._meta;
-    this._element = this._createDocumentElement(tagName, classNameMain);
+    this._element = this.createDocumentElement(tagName, classNameMain);
   }
 
   init() {
@@ -145,6 +145,7 @@ export default class Block<P = any> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set: (target: Record<string, unknown>, prop: string, value: unknown) => {
+        // eslint-disable-next-line no-param-reassign
         target[prop] = value;
 
         self.eventBus().emit(EVENTS.FLOW_RENDER);
@@ -187,10 +188,9 @@ export default class Block<P = any> {
     });
   }
 
-  _createDocumentElement(tagName: string, classNameMain?: string) {
+  private createDocumentElement(tagName: string, classNameMain?: string) {
     const element = document.createElement(tagName);
 
-    console.log("classNameMain", classNameMain);
     if (classNameMain) {
       element.classList.add(classNameMain);
     }

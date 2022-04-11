@@ -225,7 +225,7 @@ export class ChangePassword extends Block {
           },
         },
       },
-    });
+    }, "");
 
     const backButton = new BackButton({
       events: {
