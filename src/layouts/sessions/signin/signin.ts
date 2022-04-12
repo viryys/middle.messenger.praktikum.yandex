@@ -139,6 +139,7 @@ export class SignIn extends Block {
             for (const [key, value] of Object.entries(form)) {
               value.some((validateVal) => {
                 if (!validateVal.validate) {
+                  // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
                     errorClassName: styles.error,

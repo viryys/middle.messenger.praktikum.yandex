@@ -12,9 +12,13 @@ export default class Router {
 
   static __instance: Router;
 
-  constructor(rootQuery) {
+  constructor(rootQuery?: string) {
     if (Router.__instance) {
       return Router.__instance;
+    }
+
+    if (!rootQuery) {
+      throw new Error("rootId is not provided");
     }
 
     this.routes = [];

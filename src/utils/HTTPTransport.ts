@@ -25,24 +25,28 @@ export default class HTTPTransport {
   get = (
     url: string,
     options = {},
-  ) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+    baseURL?: string = this.baseUrl,
+  ) => this.request(url, { ...options, method: METHODS.GET }, options.timeout, baseURL);
 
   post = (
     url: string,
     options = {},
-  ) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+    baseURL?: string = this.baseUrl,
+  ) => this.request(url, { ...options, method: METHODS.POST }, options.timeout, baseURL);
 
   put = (
     url: string,
     options = {},
-  ) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+    baseURL?: string = this.baseUrl,
+  ) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout, baseURL);
 
   delete = (
-    url,
+    url: string,
     options = {},
-  ) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    baseURL?: string = this.baseUrl,
+  ) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout, baseURL);
 
-  request = (url, options = {}, timeout = 5000) => {
+  request = (url, options = {}, timeout = 5000, baseURL) => {
     const {
       headers = {
         "content-type": "application/json",
@@ -63,8 +67,8 @@ export default class HTTPTransport {
       xhr.open(
         method,
         isGet && !!data
-          ? `${this.baseUrl}${url}${queryStringify(data)}`
-          : `${this.baseUrl}${url}`,
+          ? `${baseURL}${url}${queryStringify(data)}`
+          : `${baseURL}${url}`,
       );
       xhr.withCredentials = true;
 

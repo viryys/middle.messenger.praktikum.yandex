@@ -1,5 +1,4 @@
 import { Props } from "./types";
-import merge from "./merge";
 
 function set(object: Props, path: string, value: any) {
   if (typeof object !== "object") {
@@ -15,7 +14,7 @@ function set(object: Props, path: string, value: any) {
       value as any,
     );
 
-  return merge(object, result);
+  return { ...object, ...result };
 }
 
 export default set;

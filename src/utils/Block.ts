@@ -40,7 +40,7 @@ export default class Block<P = any> {
    *
    * @returns {void}
    */
-  public constructor(tagName: string, props?: P, classNameMain?: string) {
+  public constructor(tagName?: string, props?: P, classNameMain?: string) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
