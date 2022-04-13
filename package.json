@@ -6,7 +6,7 @@
     "eslint": "eslint ./src --ext .js,.ts",
     "dev": "parcel -p 3000 tpl/index.html",
     "server": "node server.js",
-    "build": "parcel build tpl/index.html --no-cache --log-level info",
+    "build": "parcel build tpl/index.html",
     "start": "npm run build && npm run server",
     "test": "mocha"
   },
