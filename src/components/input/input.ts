@@ -16,18 +16,18 @@ export enum TypesInput {
 
 type Props = {
   wrapperClassName: string,
-    id: string,
-    labelName:string,
-    type: TypesInput,
-    placeholder:string,
-    inputName:string,
-    value: string,
-    events?: {
-      focus?: CurrentElementEvent,
-      blur?: CurrentElementEvent
-    },
-    errorClassName?: string,
-    validate?: ValidateMsg}
+  id: string,
+  labelName?: string,
+  type: TypesInput,
+  placeholder: string,
+  inputName: string,
+  value: string,
+  events?: {
+    focus?: CurrentElementEvent,
+    blur?: CurrentElementEvent
+  },
+  errorClassName?: string,
+  validate?: ValidateMsg}
 
 export class Input extends Block {
   constructor(props: Props) {

@@ -1,0 +1,23 @@
+<div class={{styles.chat-item-wrapper}} data-id={{id}}>
+    <div class={{styles.chat-item-avatar-wrapper}}></div>
+    <div class={{styles.chat-item-data-wrapper}}>
+        <div class={{styles.chat-item-title-wrapper}}>
+            <div class={{styles.chat-item-title-left}}>
+                <p class={{styles.chat-item-title}}>{{title}}</p>
+            </div>
+            <div class={{styles.chat-item-title-right}}>
+                <time class={{styles.chat-item-time}}>{{time}}</time>
+            </div>
+        </div>
+        <div class={{styles.chat-item-last-message-wrapper}}>
+            <div class={{styles.chat-item-last-message}}>
+                <p>
+                    <b>Вы:</b> {{message}}
+                </p>
+            </div>
+            <div class={{styles.chat-item-mention-wrapper}}>
+                <span class={{styles.chat-item-mention}}>{{bubble}}</span>
+            </div>
+        </div>
+    </div>
+</div>

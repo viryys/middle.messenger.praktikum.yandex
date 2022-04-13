@@ -4,15 +4,35 @@ import signInTemplate from "./signin.hbs";
 import * as styles from "./signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
+import ErrorResponse from "../../../components/error";
 import compile from "../../../utils/compile";
-import renderDOM from "../../../utils/renderDOM";
+import Router from "../../../utils/router";
+import AuthAPI from "../../../api/auth";
+import ChatsController from "../../../controller/chats";
+import AuthController from "../../../controller/auth";
+import { Event } from "../../../utils/types";
 
+// eslint-disable-next-line import/prefer-default-export
 export class SignIn extends Block {
+  private authApi = new AuthAPI();
+
+  private authController = new AuthController();
+
+  private chatsController = new ChatsController();
+
+  private router = new Router("#root");
+
   constructor() {
     super("div");
   }
 
   protected render(): DocumentFragment {
+    const errorResponse = new ErrorResponse({
+      wrapperClassName: styles.inputGroup,
+      errorClassName: styles.error,
+      message: "",
+    });
+
     const inputLogin = new Input({
       wrapperClassName: styles.inputGroup,
       id: "login",
@@ -28,7 +48,7 @@ export class SignIn extends Block {
       events: {
         blur: {
           currentEl: "#login",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -73,7 +93,7 @@ export class SignIn extends Block {
       events: {
         blur: {
           currentEl: "#password",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateInput = Validate.requireField(inputVal);
 
@@ -119,6 +139,7 @@ export class SignIn extends Block {
             for (const [key, value] of Object.entries(form)) {
               value.some((validateVal) => {
                 if (!validateVal.validate) {
+                  // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
                     errorClassName: styles.error,
@@ -139,19 +160,43 @@ export class SignIn extends Block {
               };
 
               console.log("SubmitData", allData);
+
+              this.authApi.signIn(allData)
+                .then((res: XMLHttpRequest) => {
+                  if (res.status === 200) {
+                    this.authController.getCurrentUser().then(() => {
+                      this.chatsController.getChats().then(() => {
+                        this.router.go("/chats");
+                      });
+                    });
+
+                    errorResponse.setProps({
+                      message: "",
+                    });
+                  } else {
+                    const result = JSON.parse(res.response);
+
+                    errorResponse.setProps({
+                      errorClassName: styles.success,
+                      message: result.reason,
+                    });
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }
           },
         },
       },
-    });
+    }, "");
 
     return compile(signInTemplate, {
       button,
       inputLogin,
       inputPassword,
+      errorResponse,
       styles,
     });
   }
 }
-
-renderDOM("#root", new SignIn());

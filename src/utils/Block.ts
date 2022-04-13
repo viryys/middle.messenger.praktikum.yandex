@@ -4,7 +4,8 @@ import { Nullable, Values } from "./types";
 
 interface BlockMeta<P = any> {
   tagName: string;
-  props: P
+  props: P,
+  classNameMain?: string,
 }
 
 // eslint-disable-next-line no-shadow
@@ -35,15 +36,17 @@ export default class Block<P = any> {
   /** JSDoc
    * @param {string} tagName
    * @param {Object} props
+   * @param {string} classNameMain
    *
    * @returns {void}
    */
-  public constructor(tagName: string, props?: P) {
+  public constructor(tagName?: string, props?: P, classNameMain?: string) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
       tagName,
       props,
+      classNameMain,
     };
 
     this.props = this._makePropsProxy(props || {} as P);
@@ -62,8 +65,8 @@ export default class Block<P = any> {
   }
 
   _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
+    const { tagName, classNameMain } = this._meta;
+    this._element = this.createDocumentElement(tagName, classNameMain);
   }
 
   init() {
@@ -142,6 +145,7 @@ export default class Block<P = any> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set: (target: Record<string, unknown>, prop: string, value: unknown) => {
+        // eslint-disable-next-line no-param-reassign
         target[prop] = value;
 
         self.eventBus().emit(EVENTS.FLOW_RENDER);
@@ -184,9 +188,14 @@ export default class Block<P = any> {
     });
   }
 
-  _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-    return document.createElement(tagName);
+  private createDocumentElement(tagName: string, classNameMain?: string) {
+    const element = document.createElement(tagName);
+
+    if (classNameMain) {
+      element.classList.add(classNameMain);
+    }
+
+    return element;
   }
 
   show() {

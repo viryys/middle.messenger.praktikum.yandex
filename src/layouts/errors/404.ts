@@ -2,7 +2,6 @@ import error404Template from "./404.hbs";
 import * as styles from "./errors.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
-import renderDOM from "../../utils/renderDOM";
 
 export default class Error404 extends Block {
   constructor() {
@@ -15,4 +14,3 @@ export default class Error404 extends Block {
   }
 }
 
-renderDOM("#root", new Error404());

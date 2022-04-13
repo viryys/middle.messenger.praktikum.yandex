@@ -1,44 +1,126 @@
 import arrowRight from "bundle-text:../../../static/img/arrow-right.svg";
 import zoom from "bundle-text:../../../static/img/zoom.svg";
-import dot from "bundle-text:../../../static/img/dot.svg";
 import clip from "bundle-text:../../../static/img/clip.svg";
 import backSvg from "bundle-text:../../../static/img/back.svg";
 import mainTemplate from "./main.hbs";
 import * as styles from "./main.css";
 import compile from "../../utils/compile";
 import Block from "../../utils/Block";
-import renderDOM from "../../utils/renderDOM";
-import hbs from "hbs";
+import Store from "../../utils/store";
+import ChatsList from "../../components/chatsList/chatsList";
+import ChatNotice from "../../components/chatNotice/chatNotice";
+import Link from "../../components/link";
+import Router from "../../utils/router";
+import ChatTitle from "../../components/chatTitle/chatTitle";
+import ChatPosts from "../../components/chatPosts/chatPosts";
+import SendMessageInput from "../../components/sendMessageInput";
+import Button, { Types } from "../../components/button";
+import { WS_TYPE } from "../../utils/webSocket";
+import { Event } from "../../utils/types";
+
+const store = new Store();
+const appStore = store.getState();
+const router = new Router("#root");
+
+const linkProfile = new Link({
+  wrapperClassName: styles["profile-link-wrapper"],
+  className: "",
+  id: "linkProfile",
+  link: "/profile",
+  title: `Профиль ${arrowRight}`,
+  events: {
+    click: {
+      currentEl: "#linkProfile",
+      func: (ev: Event) => {
+        ev.preventDefault();
+
+        router.go("/profile");
+      },
+    },
+  },
+});
+
+const chatNotice = new ChatNotice({});
 
 export default class ChatPage extends Block {
   constructor() {
-    super("div");
+    super("div", {
+      chats: [],
+      currentChat: null,
+    }, styles["main-wrapper"]);
+
+    this.props.chats = appStore.chats;
+    store.setListener(this.updateStore.bind(this), "CHATS");
+  }
+
+  updateStore() {
+    this.setProps({
+      chats: appStore.chats,
+      currentChat: appStore.currentChat,
+    });
   }
 
   protected render(): DocumentFragment {
-    const chatsList = [
-      {title: "Чат 1", message: "у меня для вас особенный выпуск новостей!.", time: "12:56", bubble: 34},
-      {title: "Чат следующий", message: "Друзья, у меня для вас особенный выпуск новостей!.", time: "13:56", bubble: 24},
-      {title: "Игры", message: "Меня для вас особенный выпуск новостей!.", time: "14:56", bubble: 334},
-      {title: "Болтовня", message: "Для вас особенный выпуск новостей!.", time: "15:56", bubble: 4},
-      {title: "Приватный", message: "Вас особенный выпуск новостей!.", time: "16:56", bubble: 8},
-      {title: "Секретный", message: "Друзья, у меня для вас особенный выпуск новостей!.", time: "17:56", bubble: 11},
-      {title: "18 этаж", message: "Друзья, у меня для вас особенный выпуск новостей!.", time: "18:56", bubble: 16},
-      {title: "Практикум", message: "Друзья, у меня для вас особенный выпуск новостей!.", time: "19:56", bubble: 39},
-      {title: "Яндекс", message: "Друзья, у меня для вас особенный выпуск новостей!.", time: "20:56", bubble: 34},
-    ];
+    const { chats, currentChat } = this.props;
+    const { chatMessages } = appStore;
+    const chatsList = new ChatsList({
+      chats,
+    });
+
+    const chatTitle = new ChatTitle({
+      chats,
+      currentChat,
+    }, styles["main-chat-top"]);
+
+    const chatPosts = new ChatPosts(
+      { messages: chatMessages },
+      styles["main-chat-content"],
+    );
+
+    const message = new SendMessageInput({
+      id: "sendMessage",
+      name: "message",
+      value: "",
+      placeholder: "Введите сообщение",
+    });
+
+    const sendMessageButton = new Button({
+      title: `${backSvg}`,
+      id: "submitMessage",
+      type: Types.Button,
+      className: styles.btnSubmit,
+      events: {
+        click: {
+          currentEl: "#submitMessage",
+          func: (ev: Event) => {
+            ev.preventDefault();
+
+            // @ts-ignore
+            const getMessage = document.getElementById("sendMessage").value;
+
+            const { ws } = appStore;
+            if (getMessage) {
+              ws.send(getMessage, WS_TYPE.Message);
+            }
+          },
+        },
+      },
+    }, styles["btn-right"]);
 
     const data = {
       styles,
-      arrow: arrowRight,
       zoom,
-      dot,
       clip,
       chatsList,
-      back: backSvg,
+      chatNotice,
+      chatTitle,
+      currentChat,
+      chatPosts,
+      message,
+      sendMessageButton,
+      linkProfile,
     };
+
     return compile(mainTemplate, data);
   }
 }
-
-renderDOM("#root", new ChatPage());

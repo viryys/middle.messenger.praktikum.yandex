@@ -1,76 +1,25 @@
-<div class={{styles.main-wrapper}}>
 <aside class={{styles.left-block-wrapper}}>
-    <div class={{styles.profile-link-wrapper}}>
-        <a href="/profile.html">Профиль {{{arrow}}}</a>
-    </div>
+    {{{linkProfile}}}
     <div class={{styles.search-chat-list}}>
         {{{zoom}}}
         <input type="text" placeholder="Поиск чатов" value="" />
     </div>
-    <div class="chat-list-wrapper">
-        {{#each chatsList as |chat|}}
-            {{#> chieldEntry}}
-                <div class={{../styles.chat-item-wrapper}}>
-                    <div class={{../styles.chat-item-avatar-wrapper}}></div>
-                    <div class={{../styles.chat-item-data-wrapper}}>
-                        <div class={{../styles.chat-item-title-wrapper}}>
-                            <div class={{../styles.chat-item-title-left}}>
-                                <p class={{../styles.chat-item-title}}>{{chat.title}}</p>
-                            </div>
-                            <div class={{../styles.chat-item-title-right}}>
-                                <time class={{../styles.chat-item-time}}>{{time}}</time>
-                            </div>
-                        </div>
-                        <div class={{../styles.chat-item-last-message-wrapper}}>
-                            <div class={{../styles.chat-item-last-message}}>
-                                <p>
-                                    <b>Вы:</b> {{message}}
-                                </p>
-                            </div>
-                            <div class={{../styles.chat-item-mention-wrapper}}>
-                                <span class={{../styles.chat-item-mention}}>{{bubble}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {{/chieldEntry}}
-        {{/each}}
+    {{{chatsList}}}
+    <div class="">
+
     </div>
 </aside>
 <article class={{styles.main-content-wrapper}}>
-    <div class={{styles.main-chat-top}}>
-        <div class={{styles.main-chat-avatar}}>
-            ВТ
+    {{#if currentChat}}
+        {{{chatTitle}}}
+        {{{chatPosts}}}
+
+        <div class={{styles.main-chat-footer}}>
+            <div class={{styles.btn-left}}>{{{clip}}}</div>
+            {{{message}}}
+            {{{sendMessageButton}}}
         </div>
-        <div class={{styles.main-chat-title}}>
-            Заголовок
-        </div>
-        <div class={{styles.main-chat-config}}>
-            {{{dot}}}
-        </div>
-    </div>
-    <div class={{styles.main-chat-content}}>
-        <div class={{styles.message-others-wrapper}}>
-            <div class={{styles.message-others-text}}>
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.</p>
-                <p>Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-            </div>
-        </div>
-        <div class={{styles.message-others-wrapper}}>
-            <img src="./img/piс1.jpg" alt="Пик1">
-        </div>
-        <div class={{styles.message-yours-wrapper}}>
-            <div class={{styles.message-yours-text}}>
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.</p>
-            </div>
-        </div>
-    </div>
-    <div class={{styles.main-chat-footer}}>
-        <div class={{styles.btn-left}}>{{{clip}}}</div>
-        <div class={{styles.message-input-wrapper}}>
-            <textarea name="message" class={{styles.message-input}}></textarea>
-        </div>
-        <div class={{styles.btn-right}}>{{{back}}}</div>
-    </div>
+    {{else}}
+        {{{chatNotice}}}
+    {{/if}}
 </article>
-</div>

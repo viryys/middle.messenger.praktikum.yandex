@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: row;
   border-top: 1px solid #EAEAEA;
+  cursor: pointer;
 }
 
 .chat-item-wrapper:last-child {
@@ -181,7 +182,8 @@
 .main-chat-content {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  overflow-y: auto;
+  flex: 1 1 auto;
   background: #fff;
 }
 
@@ -286,4 +288,15 @@
   font-family: "PT Sans", sans-serif;
   resize: none;
   font-size: 14px;
+}
+
+.chat-notice-msg {
+  font-size: 18px;
+  text-align: center;
+}
+
+.btnSubmit {
+  background: transparent;
+  border: none;
+  color: white;
 }

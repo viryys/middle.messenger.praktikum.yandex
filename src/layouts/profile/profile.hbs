@@ -1,15 +1,13 @@
 <div class={{styles.wrapper}}>
     <div class={{styles.assetLeft}}>
-        <a class={{styles.buttonBack}} href="/main.html">
-            <span id="backSVG">{{{backSvg}}}</span>
-        </a>
+        {{{backButton}}}
     </div>
     <article class={{styles.mainContent}}>
         <div class={{styles.profileWrapper}}>
             <div class={{styles.defaultAvatar}}>
-                <img src="/img/default-avatar.svg" alt="Нет аватара">
+                <img src="{{avatar}}" alt="Нет аватара">
             </div>
-            <h2 class={{styles.firstName}}>Вася</h2>
+            <h2 class={{styles.firstName}}>Профиль пользователя</h2>
             <div class={{styles.profileStringsWrapper}}>
                 <div class={{styles.profileString}}>
                     <div class={{styles.profileStringLeft}}>Почта</div>
@@ -38,19 +36,13 @@
             </div>
             <nav class={{styles.profileStringsMenu}}>
                 <div class={{styles.profileString}}>
-                    <div class={{styles.profileStringLeft}}>
-                        <a class={{styles.link}} href="/edit-profile.html">Изменить данные</a>
-                    </div>
+                    {{{editProfile}}}
                 </div>
                 <div class={{styles.profileString}}>
-                    <div class={{styles.profileStringLeft}}>
-                        <a class={{styles.link}} href="/change-password.html">Изменить пароль</a>
-                    </div>
+                    {{{changePassword}}}
                 </div>
                 <div class={{styles.profileString}}>
-                    <div class={{styles.profileStringLeft}}>
-                        <a class="{{styles.link}} {{styles.warn}}" href="/signin.html">Выйти</a>
-                    </div>
+                    {{{logout}}}
                 </div>
             </nav>
         </div>
