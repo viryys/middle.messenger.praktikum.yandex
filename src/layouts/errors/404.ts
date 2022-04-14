@@ -13,4 +13,3 @@ export default class Error404 extends Block {
     return compile(error404Template, data);
   }
 }
-

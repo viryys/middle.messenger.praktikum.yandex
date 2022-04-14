@@ -7,7 +7,7 @@ export function handlerButtonBackClick(event: Event) {
   event.preventDefault();
 
   router.back();
-};
+}
 
 export function validateInputForm(inputVal, validateRules) {
   let validateInput = {

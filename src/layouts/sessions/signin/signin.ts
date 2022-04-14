@@ -136,7 +136,9 @@ export class SignIn extends Block {
 
             let validateForm = true;
 
+            // eslint-disable-next-line no-restricted-syntax
             for (const [key, value] of Object.entries(form)) {
+              // eslint-disable-next-line no-loop-func
               value.some((validateVal) => {
                 if (!validateVal.validate) {
                   // @ts-ignore

@@ -29,17 +29,15 @@ export default class ChatPosts extends Block {
     let messagesList = [];
 
     if (messages.length > 0 && user && user.id) {
-      messagesList = messages.reduce(
-        (accumulator, message: any, index: number) => {
-          if (user.id !== message.user_id) {
-            accumulator[index] = new ChatPostLeft({ message }, styles["message-others-wrapper"]);
-          } else {
-            accumulator[index] = new ChatPostRight({ message }, styles["message-yours-wrapper"]);
-          }
+      messagesList = messages.reduce((accumulator, message: any, index: number) => {
+        if (user.id !== message.user_id) {
+          accumulator[index] = new ChatPostLeft({ message }, styles["message-others-wrapper"]);
+        } else {
+          accumulator[index] = new ChatPostRight({ message }, styles["message-yours-wrapper"]);
+        }
 
-          return accumulator;
-        }, [],
-      );
+        return accumulator;
+      }, []);
     }
 
     return compile(template, { ...this.props, messagesList });

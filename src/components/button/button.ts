@@ -18,7 +18,7 @@ type Props = {
 }}
 
 export class Button extends Block {
-  constructor(props: Props, classNameMain) {
+  constructor(props: Props, classNameMain: string) {
     super("div", props, classNameMain);
   }
 

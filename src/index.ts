@@ -3,7 +3,7 @@ import SignIn from "./layouts/sessions/signin";
 import SignUp from "./layouts/sessions/signup";
 import Profile from "./layouts/profile";
 import EditProfile from "./layouts/profile/edit-profile";
-import { ChangePassword } from "./layouts/profile/changePassword";
+import ChangePassword from "./layouts/profile/changePassword";
 import ChatPage from "./layouts/main";
 import Error404 from "./layouts/errors/404";
 import Error500 from "./layouts/errors/500";

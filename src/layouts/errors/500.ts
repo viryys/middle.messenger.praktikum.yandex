@@ -13,4 +13,3 @@ export default class Error500 extends Block {
     return compile(error500Template, data);
   }
 }
-

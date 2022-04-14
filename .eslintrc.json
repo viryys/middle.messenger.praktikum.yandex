@@ -4,7 +4,8 @@
   "plugins": ["@typescript-eslint"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "max-len": [2, 100],
@@ -14,7 +15,18 @@
     ],
     "@typescript-eslint/no-unused-vars": 2,
     "no-underscore-dangle": 0,
+    "no-restricted-exports": 0,
+    "no-console": "off",
+    "no-shadow": 0,
+    "no-plusplus": 0,
+    "import/prefer-default-export": 0,
+    "no-useless-escape": 0,
+    "no-constructor-return": 0,
+    "import/order": 0,
     "import/no-unresolved": "off",
+    "no-param-reassign": 0,
+    "no-extra-bind": 0,
+    "prefer-destructuring": 0,
     "import/extensions": [
       "error",
       {"ignorePackages":  true}

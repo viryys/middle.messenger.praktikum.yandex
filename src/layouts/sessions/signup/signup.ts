@@ -396,9 +396,12 @@ export class SignUp extends Block {
 
             let validateForm = true;
 
+            // eslint-disable-next-line no-restricted-syntax
             for (const [key, value] of Object.entries(form)) {
+              // eslint-disable-next-line no-loop-func
               value.some((validateVal) => {
                 if (!validateVal.validate) {
+                  // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
                     errorClassName: styles.error,
@@ -467,5 +470,3 @@ export class SignUp extends Block {
     });
   }
 }
-
-//renderDOM("#root", new SignUp());

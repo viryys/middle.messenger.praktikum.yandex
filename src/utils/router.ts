@@ -10,6 +10,7 @@ export default class Router {
 
   private _rootQuery: string;
 
+  // eslint-disable-next-line no-use-before-define
   static __instance: Router;
 
   constructor(rootQuery?: string) {

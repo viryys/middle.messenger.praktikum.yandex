@@ -16,7 +16,7 @@ import Store from "../../utils/store";
 const store = new Store();
 const appStore = store.getState();
 
-export class ChangePassword extends Block {
+export default class ChangePassword extends Block {
   private userApi = new UserAPI();
 
   private router = new Router("#root");
@@ -174,9 +174,12 @@ export class ChangePassword extends Block {
 
             let validateForm = true;
 
+            // eslint-disable-next-line no-restricted-syntax
             for (const [key, value] of Object.entries(form)) {
+              // eslint-disable-next-line no-loop-func
               value.some((validateVal) => {
                 if (!validateVal.validate) {
+                  // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
                     errorClassName: styles.error,
@@ -200,9 +203,7 @@ export class ChangePassword extends Block {
 
               this.userApi.changePassword(allData)
                 .then((res: XMLHttpRequest) => {
-
                   if (res.status === 200) {
-
                     this.router.go("/chats");
 
                     errorResponse.setProps({
@@ -218,7 +219,7 @@ export class ChangePassword extends Block {
                     });
                   }
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err);
                 });
             }

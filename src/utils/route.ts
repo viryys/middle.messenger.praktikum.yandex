@@ -37,6 +37,7 @@ export default class Route {
     return isEqual(pathname, this._pathname);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
   render(route?: Route, _pathname?: string) {
     if (route) {
       this._block = new route._blockClass();

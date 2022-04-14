@@ -80,7 +80,7 @@ export default class Block<P = any> {
     this.eventBus().emit(EVENTS.FLOW_RENDER);
   }
 
-  // Может переопределять пользователь, необязательно трогать
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
   componentDidMount(oldProps: P) {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
@@ -188,6 +188,7 @@ export default class Block<P = any> {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private createDocumentElement(tagName: string, classNameMain?: string) {
     const element = document.createElement(tagName);
 

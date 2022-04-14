@@ -1,4 +1,5 @@
 import { expect } from "chai";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import sinon from "sinon";
 import HTTPTransport from "./HTTPTransport";
 
@@ -7,8 +8,7 @@ describe("Http", () => {
   let http: HTTPTransport;
 
   beforeEach(() => {
-    const xhr: sinon.SinonFakeXMLHttpRequestStatic =
-      sinon.useFakeXMLHttpRequest();
+    const xhr: sinon.SinonFakeXMLHttpRequestStatic = sinon.useFakeXMLHttpRequest();
 
     (global as any).XMLHttpRequest = sinon.useFakeXMLHttpRequest();
     (global as any).FormData = class FormData {};
@@ -44,13 +44,13 @@ describe("Http", () => {
       login: "",
       email: "",
       password: "",
-      phone: ""
+      phone: "",
     };
     http.post("https://api", { data }, "");
     requests[0].respond(
       200,
       { "Content-Type": "application/json" },
-      '[{"first_name":"","second_name":"","login":"","email":"","password":"","phone":""}]',
+      "[{first_name:'',second_name:'',login:'',email:'',password:'',phone:''}]",
     );
     expect(requests.length).to.eq(1);
     expect(requests[0].method).to.eq("POST");

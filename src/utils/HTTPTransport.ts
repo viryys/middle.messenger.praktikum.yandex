@@ -11,12 +11,11 @@ function queryStringify(data) {
   }
 
   const keys = Object.keys(data);
-  return keys.reduce(
-    (
-      result,
-      key,
-      index,
-    ) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
+  return keys.reduce((
+    result,
+    key,
+    index,
+  ) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
 }
 
 export default class HTTPTransport {
@@ -46,7 +45,7 @@ export default class HTTPTransport {
     baseURL?: string = this.baseUrl,
   ) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout, baseURL);
 
-  request = (url, options = {}, timeout = 5000, baseURL) => {
+  request = (url, options = {}, timeout = 5000, baseURL = this.baseUrl) => {
     const {
       headers = {
         "content-type": "application/json",
@@ -57,7 +56,7 @@ export default class HTTPTransport {
 
     return new Promise((resolve, reject) => {
       if (!method) {
-        reject("No method");
+        reject(new Error("No method"));
         return;
       }
 
@@ -76,7 +75,7 @@ export default class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 
