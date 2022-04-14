@@ -4,11 +4,11 @@
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
     "eslint": "eslint ./src --ext .ts",
-    "dev": "webpack --mode development",
-    "server": "node server.js",
-    "build": "parcel build tpl/index.html",
-    "start": "node ./node_modules/.bin/webpack",
-    "test": "mocha"
+    "dev": "webpack serve",
+    "build": "webpack",
+    "start": "npm run build && node server.js",
+    "test": "mocha",
+    "docker:build": "docker build -t messenger ."
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "repository": {
@@ -53,7 +53,6 @@
     "html-webpack-plugin": "^5.5.0",
     "ignore-styles": "^5.0.1",
     "jsdom-global": "^3.0.2",
-    "mini-css-extract-plugin": "^2.6.0",
     "mocha": "^9.2.2",
     "postcss": "^8.4.12",
     "postcss-import": "^14.0.2",
@@ -62,6 +61,7 @@
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.2.3",
     "postcss-url": "^10.1.3",
+    "simple-git-hooks": "^2.7.0",
     "sinon": "^13.0.1",
     "style-loader": "^3.3.1",
     "stylelint": "^14.4.0",
@@ -70,7 +70,8 @@
     "ts-loader": "^9.2.8",
     "typescript": "4.6.3",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   },
   "engines": {
     "node": "^12.0.0"
@@ -79,7 +80,6 @@
     "chai": "^4.3.6",
     "jsdom": "^19.0.0",
     "nanoid": "^3.2.0",
-    "parcel-plugin-handlebars": "^0.4.4",
     "path": "^0.12.7"
   }
 }

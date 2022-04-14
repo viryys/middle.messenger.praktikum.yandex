@@ -1,5 +1,4 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -11,6 +10,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js", ".json", ".css"],
+  },
+  devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+    port: 3000,
+    historyApiFallback: {
+      index: "/",
+    },
   },
   module: {
     rules: [
