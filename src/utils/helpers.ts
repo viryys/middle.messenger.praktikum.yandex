@@ -9,13 +9,13 @@ export function handlerButtonBackClick(event: Event) {
   router.back();
 }
 
-export function validateInputForm(inputVal, validateRules) {
-  let validateInput = {
+export function validateInputForm(validateRules: any) {
+  let validateInput: { validate: any; message?: string } = {
     validate: true,
     message: "",
   };
 
-  validateRules.some((validateRule) => {
+  validateRules.some((validateRule: { validate: any; message?: string; }) => {
     if (!validateRule.validate) {
       validateInput = validateRule;
       return true;
@@ -26,7 +26,7 @@ export function validateInputForm(inputVal, validateRules) {
   return validateInput;
 }
 
-export function formatDate(date) {
+export function formatDate(date: string | number | Date) {
   const d = new Date(date);
   const ye = new Intl.DateTimeFormat("ru", { year: "numeric" }).format(d);
   const mo = new Intl.DateTimeFormat("ru", { month: "short" }).format(d);

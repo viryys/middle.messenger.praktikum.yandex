@@ -1,5 +1,5 @@
 // @ts-ignore
-import backSvg from "bundle-text:../../../static/img/back.svg";
+import backSvg from "../../../static/img/back.svg";
 import Block, { CurrentElementEvent } from "../../utils/Block";
 import * as styles from "../../layouts/profile/profile.css";
 import template from "./backButton.hbs";

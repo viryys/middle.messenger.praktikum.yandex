@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default class ChatPostRight extends Block {
-  constructor(props: Props, classNameMain) {
+  constructor(props: Props, classNameMain: string) {
     super("div", props, classNameMain);
   }
 

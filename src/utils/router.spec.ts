@@ -42,7 +42,9 @@ describe("router", () => {
     (global as any).window.scrollTo = () => {};
 
     const router = new Router("#app");
+    // @ts-ignore
     router.use("simple", SimplePage);
+    // @ts-ignore
     router.use("collection", CollectionPage);
   });
 

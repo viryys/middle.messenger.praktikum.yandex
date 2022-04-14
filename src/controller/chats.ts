@@ -6,7 +6,7 @@ export default class ChatsController {
 
   private store = new Store();
 
-  public getChats() {
+  public async getChats() {
     try {
       this.chatsApi.getChats()
         .then((res: XMLHttpRequest) => {
@@ -24,7 +24,7 @@ export default class ChatsController {
     }
   }
 
-  public getChatToken(chatId: number) {
+  public async getChatToken(chatId: number) {
     try {
       this.chatsApi.getChatToken(chatId)
         .then((res: XMLHttpRequest) => {
@@ -42,7 +42,7 @@ export default class ChatsController {
     }
   }
 
-  public getChatUsers(userId: number) {
+  public async getChatUsers(userId: number) {
     try {
       this.chatsApi.getChatUsers(userId)
         .then((res: XMLHttpRequest) => {

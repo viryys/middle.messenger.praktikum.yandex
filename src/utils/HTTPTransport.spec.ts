@@ -29,7 +29,7 @@ describe("Http", () => {
   });
 
   it("send GET request", (done) => {
-    http.get("https://api", { withCredentials: true, data: { search: 10 } }, "");
+    http.get("https://api", { data: { search: 10 } }, "");
     expect(requests.length).to.eq(1);
     expect(requests[0].method).to.eq("GET");
     expect(requests[0].withCredentials).to.eq(true);

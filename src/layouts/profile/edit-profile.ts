@@ -20,16 +20,8 @@ const appStore = store.getState();
 export default class EditProfile extends Block {
   private userApi = new UserAPI();
 
-  private user: any = null;
-
   constructor() {
     super("div");
-  }
-
-  componentDidMount(oldProps: any) {
-    super.componentDidMount(oldProps);
-
-    console.log("edit profile", store, appStore);
   }
 
   protected render(): DocumentFragment {
@@ -71,7 +63,7 @@ export default class EditProfile extends Block {
             const validateRules = [
               Validate.email(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputEmail.setProps({
               value: inputVal,
@@ -104,7 +96,7 @@ export default class EditProfile extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 3),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputLogin.setProps({
               value: inputVal,
@@ -138,7 +130,7 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputFirstName.setProps({
               value: inputVal,
@@ -172,7 +164,7 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputSecondName.setProps({
               value: inputVal,
@@ -205,7 +197,7 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputDisplayName.setProps({
               value: inputVal,
@@ -239,7 +231,7 @@ export default class EditProfile extends Block {
               Validate.phone(inputVal),
             ];
 
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputPhone.setProps({
               value: inputVal,
@@ -307,6 +299,7 @@ export default class EditProfile extends Block {
                 // eslint-disable-next-line no-loop-func
                 (validateVal) => {
                   if (!validateVal.validate) {
+                    // @ts-ignore
                     inputFields[key].setProps({
                       validate: validateVal,
                       errorClassName: styles.error,

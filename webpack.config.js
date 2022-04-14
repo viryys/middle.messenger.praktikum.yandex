@@ -1,17 +1,16 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./tpl/index.html",
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "project-name.bundle.js",
   },
   resolve: {
     extensions: [".ts", ".js", ".json"],
-    alias: {
-      handlebars: "handlebars/dist/cjs/handlebars",
-    },
   },
   module: {
     rules: [
@@ -28,6 +27,14 @@ module.exports = {
         exclude: /(node_modules)/,
       },
       {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+      {
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+      },
+      {
         test: /\.css$/i,
         use: [
           "style-loader",
@@ -37,6 +44,25 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "sass-loader",
+          },
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./tpl/index.html",
+    }),
+  ],
 };

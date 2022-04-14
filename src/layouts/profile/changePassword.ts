@@ -56,7 +56,7 @@ export default class ChangePassword extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 6),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputOldPassword.setProps({
               value: inputVal,
@@ -90,7 +90,7 @@ export default class ChangePassword extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 6),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputPassword.setProps({
               value: inputVal,
@@ -123,7 +123,7 @@ export default class ChangePassword extends Block {
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputRepeatPassword.setProps({
               value: inputVal,

@@ -9,7 +9,7 @@ export default class ChatsAPI {
   }
 
   public getChatToken(chatId: number) {
-    return this.api.post(`/chats/token/${chatId}`);
+    return this.api.post(`/chats/token/${chatId}`, {});
   }
 
   public getChatUsers(chatId: number) {
@@ -26,7 +26,9 @@ export default class ChatsAPI {
 
   public deleteChat(chatId: number) {
     const options = {
-      chatId,
+      data: {
+        chatId,
+      },
     };
 
     return this.api.delete("/chats", options);

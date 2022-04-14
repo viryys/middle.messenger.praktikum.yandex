@@ -46,7 +46,7 @@ describe("Block component", () => {
         .expect(document.getElementsByClassName("test")[0].innerHTML)
         .to.contains("default-value");
 
-      testBlock.setProps({ value: "new-value" });
+      testBlock.setProps({ id: "test", value: "new-value" });
 
       chai
         .expect(document.getElementsByClassName("test")[0].innerHTML)

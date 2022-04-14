@@ -10,6 +10,7 @@ import Validate from "../../../utils/validate";
 import Router from "../../../utils/router";
 
 import AuthAPI from "../../../api/auth";
+import { Event } from "../../../utils/types";
 
 const router = new Router("#root");
 
@@ -42,7 +43,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#email",
-          func: (event) => {
+          func: (event: Event) => {
             let validateInput = {
               validate: true,
               message: "",
@@ -86,7 +87,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#login",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -131,7 +132,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#first_name",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -177,7 +178,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#second_name",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -223,7 +224,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#phone",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -268,7 +269,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#password",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.requireField(inputVal),
@@ -313,7 +314,7 @@ export class SignUp extends Block {
       events: {
         blur: {
           currentEl: "#repeat_password",
-          func: (event) => {
+          func: (event: Event) => {
             const inputVal = event.target!.value;
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
@@ -426,7 +427,7 @@ export class SignUp extends Block {
               };
 
               this.authApi.signUp(allData)
-                .then((res) => {
+                .then((res: XMLHttpRequest) => {
                   const result = JSON.parse(res.response);
 
                   if (res.status === 200) {

@@ -9,7 +9,7 @@ export default class AuthController {
 
   private store = new Store();
 
-  public getCurrentUser() {
+  public async getCurrentUser() {
     try {
       this.authApi.getCurrentUser()
         .then((res: XMLHttpRequest) => {
@@ -27,7 +27,7 @@ export default class AuthController {
     }
   }
 
-  public logout() {
+  public async logout() {
     try {
       this.authApi.logout()
         .then((res: XMLHttpRequest) => {

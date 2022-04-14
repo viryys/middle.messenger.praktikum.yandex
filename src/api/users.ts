@@ -22,7 +22,7 @@ export default class UserAPI {
 
   public findUser(login: string) {
     const options = {
-      login,
+      data: { login },
     };
 
     return this.api.post("/user/search", options);

@@ -32,7 +32,7 @@ export default class ChatsList extends Block {
     let chatsList: any = [];
 
     if (chats && chats.length > 0) {
-      chatsList = chats.reduce((accumulator, chat: any, index: number) => {
+      chatsList = chats.reduce((accumulator: ChatItem[], chat: any, index: number) => {
         const chatItem = new ChatItem({
           ...chat,
           events: {

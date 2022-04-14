@@ -13,14 +13,6 @@ type Props = {
   updated: boolean,
 }
 
-export const isEmpty = (obj) => {
-  if (Object.keys(obj).length === 0) {
-    return true;
-  }
-
-  return false;
-};
-
 const backButton = new BackButton({
   events: {
     click: {
@@ -97,7 +89,7 @@ const appStore = store.getState();
 
 export default class Profile extends Block {
   constructor(props: Props) {
-    super("div", props);
+    super("div", props, "");
 
     store.setListener(this.updateStore.bind(this), "LOGIN");
   }
@@ -106,14 +98,12 @@ export default class Profile extends Block {
     this.setProps({ updated: !this.props.updated });
   }
 
-  protected render(): DocumentFragment {
+  render(): DocumentFragment {
     // eslint-disable-next-line no-mixed-operators
     const user = appStore && appStore.user || {};
     const avatar = user.avatar
       ? `https://ya-praktikum.tech/${user.avatar}`
       : "/img/default-avatar.svg";
-
-    console.log("profile render", user, user.avatar);
 
     const data = {
       ...user,
