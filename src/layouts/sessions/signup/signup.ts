@@ -2,7 +2,7 @@ import Block from "../../../utils/Block";
 
 import compile from "../../../utils/compile";
 import signUpTemplate from "./signup.hbs";
-import * as styles from "../signin/signin.css";
+import styles from "../signin/signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
 import ErrorResponse from "../../../components/error";

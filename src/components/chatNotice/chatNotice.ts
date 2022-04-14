@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./chatNotice.hbs";
 import compile from "../../utils/compile";
-import * as styles from "../../layouts/main/main.css";
+import styles from "../../layouts/main/main.css";
 
 type Props = {}
 

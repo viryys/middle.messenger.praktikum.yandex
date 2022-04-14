@@ -4,7 +4,7 @@ import compile from "../../utils/compile";
 import ChatPostLeft from "../chatPostLeft/chatPostLeft";
 import ChatPostRight from "../chatPostRight/chatPostRight";
 import Store from "../../utils/store";
-import * as styles from "../../layouts/main/main.css";
+import styles from "../../layouts/main/main.css";
 import { Props } from "../../utils/types";
 
 const store = new Store();

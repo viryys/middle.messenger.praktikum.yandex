@@ -3,7 +3,7 @@ import zoom from "../../../static/img/zoom.svg";
 import clip from "../../../static/img/clip.svg";
 import backSvg from "../../../static/img/back.svg";
 import mainTemplate from "./main.hbs";
-import * as styles from "./main.css";
+import styles from "./main.css";
 import compile from "../../utils/compile";
 import Block from "../../utils/Block";
 import Store from "../../utils/store";

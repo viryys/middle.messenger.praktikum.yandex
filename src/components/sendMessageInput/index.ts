@@ -1,7 +1,7 @@
 import teamplate from "./sendMessageInput.hbs";
 import Block, { CurrentElementEvent } from "../../utils/Block";
 import compile from "../../utils/compile";
-import * as styles from "../../layouts/main/main.css";
+import styles from "../../layouts/main/main.css";
 import { ValidateMsg } from "../../utils/types";
 
 type Props = {

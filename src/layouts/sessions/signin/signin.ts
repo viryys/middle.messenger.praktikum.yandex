@@ -1,7 +1,7 @@
 import Block from "../../../utils/Block";
 import Validate from "../../../utils/validate";
 import signInTemplate from "./signin.hbs";
-import * as styles from "./signin.css";
+import styles from "./signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
 import ErrorResponse from "../../../components/error";

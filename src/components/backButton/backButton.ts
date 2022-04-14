@@ -1,9 +1,11 @@
 // @ts-ignore
 import backSvg from "../../../static/img/back.svg";
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import * as styles from "../../layouts/profile/profile.css";
+import styles from "../../layouts/profile/profile.css";
 import template from "./backButton.hbs";
 import compile from "../../utils/compile";
+
+console.log("template", template);
 
 type Props = {
     events?: {

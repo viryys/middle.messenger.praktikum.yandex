@@ -45,16 +45,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: "sass-loader",
-          },
-          "css-loader",
-          "sass-loader",
-        ],
-      },
-      {
         test: /\.svg$/,
         loader: "svg-inline-loader",
       },

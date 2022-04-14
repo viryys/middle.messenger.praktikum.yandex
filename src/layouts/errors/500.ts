@@ -1,5 +1,5 @@
 import error500Template from "./500.hbs";
-import * as styles from "./errors.css";
+import styles from "./errors.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 

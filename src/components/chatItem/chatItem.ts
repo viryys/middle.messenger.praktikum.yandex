@@ -1,5 +1,5 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import * as styles from "../../layouts/main/main.css";
+import styles from "../../layouts/main/main.css";
 import compile from "../../utils/compile";
 import template from "./chatItem.hbs";
 

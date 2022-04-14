@@ -1,5 +1,5 @@
 import profileTemplate from "./profile.hbs";
-import * as styles from "./profile.css";
+import styles from "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import Store from "../../utils/store";

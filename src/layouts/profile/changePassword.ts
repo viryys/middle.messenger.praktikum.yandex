@@ -1,5 +1,5 @@
 import profileTemplate from "./change-password.hbs";
-import * as styles from "./profile.css";
+import styles from "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import BackButton from "../../components/backButton";
