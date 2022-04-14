@@ -10,7 +10,7 @@ module.exports = {
     filename: "project-name.bundle.js",
   },
   resolve: {
-    extensions: [".ts", ".js", ".json"],
+    extensions: [".ts", ".js", ".json", ".css"],
   },
   module: {
     rules: [

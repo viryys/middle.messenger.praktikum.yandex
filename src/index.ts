@@ -1,3 +1,4 @@
+import "../static/css/main.css";
 import Router from "./utils/router";
 import SignIn from "./layouts/sessions/signin";
 import SignUp from "./layouts/sessions/signup";

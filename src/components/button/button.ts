@@ -1,5 +1,5 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import template from "./button.hbs";
+import * as template from "./button.hbs";
 import compile from "../../utils/compile";
 
 export enum Types {

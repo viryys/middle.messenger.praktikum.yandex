@@ -1,5 +1,5 @@
-import profileTemplate from "./change-password.hbs";
-import styles from "./profile.css";
+import * as profileTemplate from "./change-password.hbs";
+import "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import BackButton from "../../components/backButton";
@@ -36,7 +36,7 @@ export default class ChangePassword extends Block {
 
   protected render(): DocumentFragment {
     const inputOldPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "oldPassword",
       labelName: undefined,
       placeholder: "Ввведите старый пароль",
@@ -61,7 +61,7 @@ export default class ChangePassword extends Block {
             inputOldPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -69,7 +69,7 @@ export default class ChangePassword extends Block {
     });
 
     const inputPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "newPassword",
       labelName: undefined,
       placeholder: "Ввведите новый пароль",
@@ -80,7 +80,7 @@ export default class ChangePassword extends Block {
         validate: true,
         message: "",
       },
-      errorClassName: styles.error,
+      errorClassName: "error",
       events: {
         blur: {
           currentEl: "#newPassword",
@@ -95,7 +95,7 @@ export default class ChangePassword extends Block {
             inputPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -103,7 +103,7 @@ export default class ChangePassword extends Block {
     });
 
     const inputRepeatPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "repeat_password",
       labelName: undefined,
       placeholder: "Повторите пароль",
@@ -114,7 +114,7 @@ export default class ChangePassword extends Block {
         validate: true,
         message: "",
       },
-      errorClassName: styles.error,
+      errorClassName: "error",
       events: {
         blur: {
           currentEl: "#repeat_password",
@@ -128,7 +128,7 @@ export default class ChangePassword extends Block {
             inputRepeatPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -136,8 +136,8 @@ export default class ChangePassword extends Block {
     });
 
     const errorResponse = new ErrorResponse({
-      wrapperClassName: styles.profileStringError,
-      errorClassName: styles.errorMsg,
+      wrapperClassName: "profileStringError",
+      errorClassName: "errorMsg",
       message: "",
     });
 
@@ -145,7 +145,7 @@ export default class ChangePassword extends Block {
       title: "Сохранить",
       type: Types.Submit,
       id: "submitPassword",
-      className: styles.button,
+      className: "button",
       events: {
         click: {
           currentEl: "#submitPassword",
@@ -182,7 +182,7 @@ export default class ChangePassword extends Block {
                   // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
-                    errorClassName: styles.error,
+                    errorClassName: "error",
                   });
 
                   validateForm = false;
@@ -214,7 +214,7 @@ export default class ChangePassword extends Block {
 
                     console.log(result, res);
                     errorResponse.setProps({
-                      errorClassName: styles.errorMsg,
+                      errorClassName: "errorMsg",
                       message: res.response,
                     });
                   }
@@ -249,7 +249,6 @@ export default class ChangePassword extends Block {
       backButton,
       errorResponse,
       avatar,
-      styles,
     });
   }
 }

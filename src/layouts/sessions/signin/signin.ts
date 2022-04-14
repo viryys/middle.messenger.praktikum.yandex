@@ -1,7 +1,7 @@
 import Block from "../../../utils/Block";
 import Validate from "../../../utils/validate";
-import signInTemplate from "./signin.hbs";
-import styles from "./signin.css";
+import * as signInTemplate from "./signin.hbs";
+import "./signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
 import ErrorResponse from "../../../components/error";
@@ -28,13 +28,13 @@ export class SignIn extends Block {
 
   protected render(): DocumentFragment {
     const errorResponse = new ErrorResponse({
-      wrapperClassName: styles.inputGroup,
-      errorClassName: styles.error,
+      wrapperClassName: "inputGroup",
+      errorClassName: "error",
       message: "",
     });
 
     const inputLogin = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "login",
       labelName: "Логин",
       placeholder: "Ввведите логин",
@@ -71,7 +71,7 @@ export class SignIn extends Block {
             inputLogin.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -79,7 +79,7 @@ export class SignIn extends Block {
     });
 
     const inputPassword = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "password",
       labelName: "Пароль",
       placeholder: "Введите пароль",
@@ -100,7 +100,7 @@ export class SignIn extends Block {
             inputPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -111,7 +111,7 @@ export class SignIn extends Block {
       title: "Войти",
       type: Types.Submit,
       id: "submitLogin",
-      className: styles.button,
+      className: "button",
       events: {
         click: {
           currentEl: "#submitLogin",
@@ -144,7 +144,7 @@ export class SignIn extends Block {
                   // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
-                    errorClassName: styles.error,
+                    errorClassName: "error",
                   });
 
                   validateForm = false;
@@ -179,7 +179,7 @@ export class SignIn extends Block {
                     const result = JSON.parse(res.response);
 
                     errorResponse.setProps({
-                      errorClassName: styles.success,
+                      errorClassName: "success",
                       message: result.reason,
                     });
                   }
@@ -198,7 +198,6 @@ export class SignIn extends Block {
       inputLogin,
       inputPassword,
       errorResponse,
-      styles,
     });
   }
 }

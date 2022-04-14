@@ -1,10 +1,10 @@
 import Block from "../../utils/Block";
-import template from "./chatPosts.hbs";
+import * as template from "./chatPosts.hbs";
 import compile from "../../utils/compile";
 import ChatPostLeft from "../chatPostLeft/chatPostLeft";
 import ChatPostRight from "../chatPostRight/chatPostRight";
 import Store from "../../utils/store";
-import styles from "../../layouts/main/main.css";
+import "../../layouts/main/main.css";
 import { Props } from "../../utils/types";
 
 const store = new Store();
@@ -33,9 +33,9 @@ export default class ChatPosts extends Block {
       // eslint-disable-next-line max-len
       messagesList = messages.reduce((accumulator: ChatPostRight[] | ChatPostLeft[], message: any, index: number) => {
         if (user.id !== message.user_id) {
-          accumulator[index] = new ChatPostLeft({ message }, styles["message-others-wrapper"]);
+          accumulator[index] = new ChatPostLeft({ message }, "message-others-wrapper");
         } else {
-          accumulator[index] = new ChatPostRight({ message }, styles["message-yours-wrapper"]);
+          accumulator[index] = new ChatPostRight({ message }, "message-yours-wrapper");
         }
 
         return accumulator;

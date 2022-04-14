@@ -1,8 +1,8 @@
 import Block from "../../utils/Block";
-import styles from "../../layouts/main/main.css";
-import dot from "../../../static/img/dot.svg";
+import "../../layouts/main/main.css";
+import * as dot from "../../../static/img/dot.svg";
 import compile from "../../utils/compile";
-import template from "./chatTitle.hbs";
+import * as template from "./chatTitle.hbs";
 
 type Props = {
   chats: [],
@@ -25,7 +25,6 @@ export default class ChatTitle extends Block {
     });
 
     return compile(template, {
-      styles,
       ...this.props,
       dot,
       currentChatInfo,

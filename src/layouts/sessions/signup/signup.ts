@@ -1,8 +1,8 @@
 import Block from "../../../utils/Block";
 
 import compile from "../../../utils/compile";
-import signUpTemplate from "./signup.hbs";
-import styles from "../signin/signin.css";
+import * as signUpTemplate from "./signup.hbs";
+import "../signin/signin.css";
 import Button, { Types } from "../../../components/button";
 import Input, { TypesInput } from "../../../components/input";
 import ErrorResponse from "../../../components/error";
@@ -23,13 +23,13 @@ export class SignUp extends Block {
 
   protected render(): DocumentFragment {
     const errorResponse = new ErrorResponse({
-      wrapperClassName: styles.inputGroup,
-      errorClassName: styles.error,
+      wrapperClassName: "inputGroup",
+      errorClassName: "error",
       message: "",
     });
 
     const inputEmail = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "email",
       labelName: "Почта",
       placeholder: "Ввведите адрес почты",
@@ -65,7 +65,7 @@ export class SignUp extends Block {
             inputEmail.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -73,7 +73,7 @@ export class SignUp extends Block {
     });
 
     const inputLogin = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "login",
       labelName: "Логин",
       placeholder: "Ввведите логин",
@@ -110,7 +110,7 @@ export class SignUp extends Block {
             inputLogin.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -118,7 +118,7 @@ export class SignUp extends Block {
     });
 
     const inputFirstName = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "first_name",
       labelName: "Имя",
       placeholder: "Ввведите имя",
@@ -156,7 +156,7 @@ export class SignUp extends Block {
             inputFirstName.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -164,7 +164,7 @@ export class SignUp extends Block {
     });
 
     const inputSecondName = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "second_name",
       labelName: "Фамилия",
       placeholder: "Ввведите фамилию",
@@ -202,7 +202,7 @@ export class SignUp extends Block {
             inputSecondName.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -210,7 +210,7 @@ export class SignUp extends Block {
     });
 
     const inputPhone = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "phone",
       labelName: "Телефон",
       placeholder: "Ввведите телефон",
@@ -247,7 +247,7 @@ export class SignUp extends Block {
             inputPhone.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -255,7 +255,7 @@ export class SignUp extends Block {
     });
 
     const inputPassword = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "password",
       labelName: "Пароль",
       placeholder: "Ввведите пароль",
@@ -292,7 +292,7 @@ export class SignUp extends Block {
             inputPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -300,7 +300,7 @@ export class SignUp extends Block {
     });
 
     const inputRepeatPassword = new Input({
-      wrapperClassName: styles.inputGroup,
+      wrapperClassName: "inputGroup",
       id: "repeat_password",
       labelName: "Повторите пароль",
       placeholder: "Повторите пароль",
@@ -336,7 +336,7 @@ export class SignUp extends Block {
             inputRepeatPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -347,7 +347,7 @@ export class SignUp extends Block {
       title: "Зарегистрировать",
       type: Types.Submit,
       id: "submitSignUp",
-      className: styles.button,
+      className: "button",
       events: {
         click: {
           currentEl: "#submitSignUp",
@@ -405,7 +405,7 @@ export class SignUp extends Block {
                   // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
-                    errorClassName: styles.error,
+                    errorClassName: "error",
                   });
 
                   validateForm = false;
@@ -435,7 +435,7 @@ export class SignUp extends Block {
 
                     errorResponse.setProps({
                       message: "Аккаунт успешно создался. Введите свои данные в форму авторизации",
-                      errorClassName: styles.success,
+                      errorClassName: "success",
                     });
 
                     setTimeout(() => {
@@ -467,7 +467,6 @@ export class SignUp extends Block {
       inputRepeatPassword,
       button,
       errorResponse,
-      styles,
     });
   }
 }

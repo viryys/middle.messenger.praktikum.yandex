@@ -1,6 +1,6 @@
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
-import template from "./error.hbs";
+import * as template from "./error.hbs";
 
 type Props = {
   wrapperClassName: string,

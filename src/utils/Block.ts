@@ -40,7 +40,7 @@ export default class Block<P = any> {
    *
    * @returns {void}
    */
-  public constructor(tagName?: string, props?: P, classNameMain?: string) {
+  public constructor(tagName: string, props?: P, classNameMain?: string) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
@@ -74,14 +74,13 @@ export default class Block<P = any> {
     this.eventBus().emit(EVENTS.FLOW_CDM, this.props);
   }
 
-  _componentDidMount(props: P) {
-    this.componentDidMount(props);
+  _componentDidMount() {
+    this.componentDidMount();
 
     this.eventBus().emit(EVENTS.FLOW_RENDER);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-  componentDidMount(oldProps: P) {}
+  componentDidMount() {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);

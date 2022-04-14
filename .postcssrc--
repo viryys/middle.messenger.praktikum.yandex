@@ -1,8 +1,8 @@
 {
   "modules": true,
   "plugins": {
-    "postcss-import": true,
-    "postcss-preset-env": {},
+    "postcss-url": true,
+    "postcss-import": {},
     "postcss-modules": {
       "generateScopedName": "_[name]__[local]"
     }

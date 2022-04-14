@@ -12,5 +12,5 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*"]
+  "include": ["typings/css.d.ts", "typings/hbs.d.ts", "typings/svg.d.ts"]
 }

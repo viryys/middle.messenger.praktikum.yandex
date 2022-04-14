@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
-import template from "./chatPostRight.hbs";
+import * as template from "./chatPostRight.hbs";
 import compile from "../../utils/compile";
-import styles from "../../layouts/main/main.css";
+import "../../layouts/main/main.css";
 import { formatDate } from "../../utils/helpers";
 
 type Props = {
@@ -21,7 +21,6 @@ export default class ChatPostRight extends Block {
       ...this.props,
       message,
       formatDate: specialDate,
-      styles,
     });
   }
 }

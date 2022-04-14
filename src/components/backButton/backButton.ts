@@ -1,8 +1,8 @@
 // @ts-ignore
-import backSvg from "../../../static/img/back.svg";
+import * as backSvg from "../../../static/img/back.svg";
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import styles from "../../layouts/profile/profile.css";
-import template from "./backButton.hbs";
+import "../../layouts/profile/profile.css";
+import * as template from "./backButton.hbs";
 import compile from "../../utils/compile";
 
 console.log("template", template);
@@ -20,6 +20,6 @@ export class BackButton extends Block {
   }
 
   render() {
-    return compile(template, { ...this.props, styles, backSvg });
+    return compile(template, { ...this.props, backSvg });
   }
 }

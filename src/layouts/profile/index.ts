@@ -1,5 +1,5 @@
-import profileTemplate from "./profile.hbs";
-import styles from "./profile.css";
+import * as profileTemplate from "./profile.hbs";
+import "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import Store from "../../utils/store";
@@ -8,10 +8,6 @@ import { handlerButtonBackClick } from "../../utils/helpers";
 import Link from "../../components/link";
 import AuthController from "../../controller/auth";
 import Router from "../../utils/router";
-
-type Props = {
-  updated: boolean,
-}
 
 const backButton = new BackButton({
   events: {
@@ -27,10 +23,10 @@ const authController = new AuthController();
 const router = new Router("#root");
 
 const editProfile = new Link({
-  wrapperClassName: styles.profileStringLeft,
+  wrapperClassName: "profileStringLeft",
   id: "editProfile",
   title: "Изменить данные",
-  className: styles.link,
+  className: "link",
   link: "/profile/edit",
   events: {
     click: {
@@ -45,10 +41,10 @@ const editProfile = new Link({
 });
 
 const changePassword = new Link({
-  wrapperClassName: styles.profileStringLeft,
+  wrapperClassName: "profileStringLeft",
   id: "changePassword",
   title: "Изменить пароль",
-  className: styles.link,
+  className: "link",
   link: "/profile/change-password",
   events: {
     click: {
@@ -63,10 +59,10 @@ const changePassword = new Link({
 });
 
 const logout = new Link({
-  wrapperClassName: styles.profileStringLeft,
+  wrapperClassName: "profileStringLeft",
   id: "logout",
   title: "Выйти",
-  className: `${styles.link} ${styles.warn}`,
+  className: `${"link"} ${"warn"}`,
   link: "/logout",
   events: {
     click: {
@@ -88,8 +84,8 @@ const store = new Store();
 const appStore = store.getState();
 
 export default class Profile extends Block {
-  constructor(props: Props) {
-    super("div", props, "");
+  constructor() {
+    super("div", {}, "");
 
     store.setListener(this.updateStore.bind(this), "LOGIN");
   }
@@ -112,7 +108,6 @@ export default class Profile extends Block {
       changePassword,
       editProfile,
       logout,
-      styles,
     };
     return compile(profileTemplate, data);
   }
