@@ -2,14 +2,15 @@
 
 ## Описание
 - Данный проект является практическим, для повышения навыков front-end разработки
+- [ссылка на дизайн чата на ресурсе figma](https://www.figma.com/file/jwHNcD2NtJvqeBidW0ddVF/praktikum.chat?node-id=0%3A1)
 - Подключил внешние API и WebSocket. 
 - Добавил логику на страницу Регистрации, Авторизации, Профиль (вывод данных), Редактирование профиля, Изменить пароль от аккаунта, Логаут.
 - Привязал часть функционала для чата: Вывод списка чатов и вывод списка постов.
 - Все страницы переходят без перезагрузки как SPA
-
-на данный момент скомпилированная версия сайта находится на публичном домене 
-[ссылка на проект](https://tatarchuk.netlify.app/)
-[ссылка на дизайн будущего чата на ресурсе figma](https://www.figma.com/file/jwHNcD2NtJvqeBidW0ddVF/praktikum.chat?node-id=0%3A1)
+- **Переписал сборщик с Parcel на WebPack**
+- Создал Docker контейнер
+- [Задеплоил сборку на Heroku](https://tatarchuk-chat.herokuapp.com/)
+- https://tatarchuk-chat.herokuapp.com/
 
 
 ## Установка
@@ -19,17 +20,8 @@
 
 ## Примеры использования
 
-В данном модуле создано 8 страниц:
-
-- [Страница регистрации](https://tatarchuk.netlify.app/signup)
-- [Страница авторизации](https://tatarchuk.netlify.app/signin)
-- [Страница чата](https://tatarchuk.netlify.app/chats)
-- [Страница профиля](https://tatarchuk.netlify.app/profile)
-- [Страница редактирования профиля](https://tatarchuk.netlify.app/profile/edit)
-- [Страница изменения пароля](https://tatarchuk.netlify.app/profile/change-password)
-- [Ошибка 404](https://tatarchuk.netlify.app/404)
-- [Ошибка 500](https://tatarchuk.netlify.app/500)
+**https://tatarchuk-chat.herokuapp.com/**
 
 ## Дизайн проекта
 
-[ссылка на дизайн будущего чата на ресурсе figma](https://www.figma.com/file/jwHNcD2NtJvqeBidW0ddVF/praktikum.chat?node-id=0%3A1)
+[ссылка на дизайн чата на ресурсе figma](https://www.figma.com/file/jwHNcD2NtJvqeBidW0ddVF/praktikum.chat?node-id=0%3A1)
