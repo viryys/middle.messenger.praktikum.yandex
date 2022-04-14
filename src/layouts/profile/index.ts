@@ -26,7 +26,7 @@ const editProfile = new Link({
   wrapperClassName: "profileStringLeft",
   id: "editProfile",
   title: "Изменить данные",
-  className: "link",
+  className: "linkProfile",
   link: "/profile/edit",
   events: {
     click: {
@@ -44,7 +44,7 @@ const changePassword = new Link({
   wrapperClassName: "profileStringLeft",
   id: "changePassword",
   title: "Изменить пароль",
-  className: "link",
+  className: "linkProfile",
   link: "/profile/change-password",
   events: {
     click: {
@@ -62,7 +62,7 @@ const logout = new Link({
   wrapperClassName: "profileStringLeft",
   id: "logout",
   title: "Выйти",
-  className: `${"link"} ${"warn"}`,
+  className: `${"linkProfile"} ${"warn"}`,
   link: "/logout",
   events: {
     click: {

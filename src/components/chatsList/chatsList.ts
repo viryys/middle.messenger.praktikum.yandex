@@ -37,7 +37,7 @@ export default class ChatsList extends Block {
           ...chat,
           events: {
             click: {
-              currentEl: "._main__chat-item-wrapper",
+              currentEl: ".chat-item-wrapper",
               func: handleChatItemClick,
             },
           },

@@ -183,6 +183,11 @@
   justify-content: center;
 }
 
+.main-chat-config svg {
+  width: 3px;
+  height: 16px;
+}
+
 .main-chat-content {
   display: flex;
   flex-direction: column;
@@ -280,6 +285,8 @@
 
 .btn-right svg {
   transform: rotate(-180deg);
+  width: 13px;
+  height: 12px;
 }
 
 .message-input {

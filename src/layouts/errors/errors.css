@@ -2,7 +2,7 @@
   justify-content: center;
 }
 
-.link {
+.linkError {
   color: #3369f3;
   text-decoration: underline;
   font-size: 12px;
@@ -10,7 +10,7 @@
   display: block;
   text-align: center;
 }
-.link:hover {
+.linkError:hover {
   text-decoration: none;
 }
 .title {

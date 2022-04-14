@@ -1,4 +1,4 @@
-.wrapper {
+.wrapperProfile {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
@@ -35,6 +35,11 @@
   height: 28px;
   background: #4BB049;
   border-radius: 50%;
+}
+
+.buttonBack span svg {
+  width: 13px;
+  height: 12px;
 }
 
 .buttonBack:hover span {
@@ -138,14 +143,14 @@
   margin-top: 40px;
 }
 
-.link {
+.linkProfile {
   color: #4BB049;
   text-decoration: underline;
   text-align: center;
   font-size: 14px;
 }
 
-.link:hover {
+.linkProfile:hover {
   text-decoration: none;
 }
 
