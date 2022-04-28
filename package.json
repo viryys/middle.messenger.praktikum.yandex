@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Онлайн чат с регистрацией приватными и общими чатами.",
   "scripts": {
-    "eslint": "eslint ./src --ext .js,.ts",
-    "dev": "parcel -p 3000 tpl/index.html",
-    "server": "node server.js",
-    "build": "parcel build tpl/index.html",
-    "start": "npm run build && npm run server",
-    "test": "mocha"
+    "eslint": "eslint ./src --ext .ts",
+    "dev": "webpack serve",
+    "build": "webpack",
+    "start": "npm run build && node server.js",
+    "test": "mocha",
+    "docker:build": "docker build -t messenger ."
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "repository": {
@@ -25,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/viryys/middle.messenger.praktikum.yandex/issues"
   },
+  "source": "tpl/index.html",
   "staticFiles": {
     "staticPath": "static/"
   },
@@ -34,44 +35,51 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@babel/register": "^7.17.7",
-    "@parcel/config-default": "^2.2.0",
-    "@parcel/transformer-inline-string": "^2.2.1",
-    "@parcel/transformer-sass": "^2.2.1",
     "@types/chai": "^4.3.0",
     "@types/jsdom": "^16.2.14",
     "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.23",
     "@types/sinon": "^10.0.11",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
     "autoprefixer": "^10.4.2",
+    "css-loader": "^6.7.1",
     "eslint": "^8.8.0",
     "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.2",
+    "file-loader": "^6.2.0",
+    "handlebars-loader": "^0.0.4",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "ignore-styles": "^5.0.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^9.2.2",
-    "parcel": "^2.2.1",
-    "parcel-reporter-static-files-copy": "^1.3.4",
-    "parcel-transformer-hbs": "^1.0.4",
-    "pirates": "^4.0.5",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.12",
     "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.1",
     "postcss-modules": "^4.3.0",
+    "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.2.3",
+    "postcss-url": "^10.1.3",
+    "simple-git-hooks": "^2.7.0",
+    "sinon": "^13.0.1",
+    "style-loader": "^3.3.1",
     "stylelint": "^14.4.0",
     "stylelint-config-standard": "^25.0.0",
-    "ts-node": "^10.7.0",
-    "sinon": "^13.0.1",
-    "typescript": "^4.5.5"
+    "svg-inline-loader": "^0.8.2",
+    "ts-loader": "^9.2.8",
+    "typescript": "4.6.3",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   },
   "engines": {
     "node": "^12.0.0"
   },
   "dependencies": {
-    "nanoid": "^3.2.0",
-    "parcel-plugin-handlebars": "^0.4.4",
-    "path": "^0.12.7",
     "chai": "^4.3.6",
-    "jsdom": "^19.0.0"
+    "jsdom": "^19.0.0",
+    "nanoid": "^3.2.0",
+    "path": "^0.12.7"
   }
 }

@@ -1,7 +1,7 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import * as styles from "../../layouts/main/main.css";
+import "../../layouts/main/main.css";
 import compile from "../../utils/compile";
-import template from "./chatItem.hbs";
+import * as template from "./chatItem.hbs";
 
 type Props = {
   title: string,
@@ -17,6 +17,6 @@ export default class ChatItem extends Block {
   }
 
   render() {
-    return compile(template, { styles, ...this.props });
+    return compile(template, { ...this.props });
   }
 }

@@ -1,23 +1,16 @@
 {
   "compilerOptions": {
-    "incremental": true,
     "outDir": "dist",
     "target": "es2016",
-    "declaration": false,
+    "baseUrl": ".",
     "module": "commonjs",
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
     "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "useUnknownInCatchVariables": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
+    "declaration": false,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "skipLibCheck": true
-  }
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["typings/css.d.ts", "typings/hbs.d.ts", "typings/svg.d.ts"]
 }

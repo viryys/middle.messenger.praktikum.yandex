@@ -1,7 +1,7 @@
-import teamplate from "./sendMessageInput.hbs";
+import * as teamplate from "./sendMessageInput.hbs";
 import Block, { CurrentElementEvent } from "../../utils/Block";
 import compile from "../../utils/compile";
-import * as styles from "../../layouts/main/main.css";
+import "../../layouts/main/main.css";
 import { ValidateMsg } from "../../utils/types";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 
 export default class SendMessageInput extends Block {
   constructor(props: Props) {
-    super("div", props, styles["message-input-wrapper"]);
+    super("div", props, "message-input-wrapper");
   }
 
   getValue(): string {
@@ -26,6 +26,6 @@ export default class SendMessageInput extends Block {
   }
 
   protected render(): DocumentFragment {
-    return compile(teamplate, { ...this.props, styles });
+    return compile(teamplate, { ...this.props });
   }
 }

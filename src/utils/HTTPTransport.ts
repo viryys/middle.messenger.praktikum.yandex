@@ -1,3 +1,5 @@
+import { Props } from "./types";
+
 const METHODS = {
   GET: "GET",
   POST: "POST",
@@ -5,18 +7,27 @@ const METHODS = {
   DELETE: "DELETE",
 };
 
-function queryStringify(data) {
+export type Options = {
+  method?: string;
+  timeout?: number;
+  credentials?: boolean;
+  mode?: string;
+  headers?: Record<string, string>;
+  body?: Record<string, any>;
+  data?: Record<string, any>;
+};
+
+function queryStringify(data: { [x: string]: any; }) {
   if (typeof data !== "object") {
     throw new Error("Data must be object");
   }
 
   const keys = Object.keys(data);
-  return keys.reduce(
-    (
-      result,
-      key,
-      index,
-    ) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
+  return keys.reduce((
+    result,
+    key,
+    index,
+  ) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
 }
 
 export default class HTTPTransport {
@@ -24,29 +35,29 @@ export default class HTTPTransport {
 
   get = (
     url: string,
-    options = {},
-    baseURL?: string = this.baseUrl,
-  ) => this.request(url, { ...options, method: METHODS.GET }, options.timeout, baseURL);
+    options?: Options,
+    baseURL?: string,
+  ) => this.request(url, { ...options, method: METHODS.GET }, baseURL);
 
   post = (
     url: string,
-    options = {},
-    baseURL?: string = this.baseUrl,
-  ) => this.request(url, { ...options, method: METHODS.POST }, options.timeout, baseURL);
+    options: Options,
+    baseURL?: string,
+  ) => this.request(url, { ...options, method: METHODS.POST }, baseURL);
 
   put = (
     url: string,
-    options = {},
-    baseURL?: string = this.baseUrl,
-  ) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout, baseURL);
+    options: Options,
+    baseURL?: string,
+  ) => this.request(url, { ...options, method: METHODS.PUT }, baseURL);
 
   delete = (
     url: string,
-    options = {},
-    baseURL?: string = this.baseUrl,
-  ) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout, baseURL);
+    options: Options,
+    baseURL?: string,
+  ) => this.request(url, { ...options, method: METHODS.DELETE }, baseURL);
 
-  request = (url, options = {}, timeout = 5000, baseURL) => {
+  request = (url: string, options: Props = {}, baseURL = this.baseUrl) => {
     const {
       headers = {
         "content-type": "application/json",
@@ -57,7 +68,7 @@ export default class HTTPTransport {
 
     return new Promise((resolve, reject) => {
       if (!method) {
-        reject("No method");
+        reject(new Error("No method"));
         return;
       }
 
@@ -76,14 +87,14 @@ export default class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 
       xhr.onabort = reject;
       xhr.onerror = reject;
 
-      xhr.timeout = timeout;
+      xhr.timeout = 5000;
       xhr.ontimeout = reject;
 
       if (isGet || !data) {

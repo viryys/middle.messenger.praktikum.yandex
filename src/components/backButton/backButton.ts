@@ -1,9 +1,11 @@
 // @ts-ignore
-import backSvg from "bundle-text:../../../static/img/back.svg";
+import * as backSvg from "../../../static/img/back.svg";
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import * as styles from "../../layouts/profile/profile.css";
-import template from "./backButton.hbs";
+import "../../layouts/profile/profile.css";
+import * as template from "./backButton.hbs";
 import compile from "../../utils/compile";
+
+console.log("template", template);
 
 type Props = {
     events?: {
@@ -18,6 +20,6 @@ export class BackButton extends Block {
   }
 
   render() {
-    return compile(template, { ...this.props, styles, backSvg });
+    return compile(template, { ...this.props, backSvg });
   }
 }

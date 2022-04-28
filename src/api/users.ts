@@ -12,10 +12,6 @@ export default class UserAPI {
     return this.api.put("/user/password", options);
   }
 
-  public changeAvatar(data: BodyRequest) {
-    const options = {}
-  }
-
   public editProfile(data: BodyRequest) {
     const options = {
       data,
@@ -26,7 +22,7 @@ export default class UserAPI {
 
   public findUser(login: string) {
     const options = {
-      login,
+      data: { login },
     };
 
     return this.api.post("/user/search", options);

@@ -24,6 +24,8 @@
   color: #333;
 }
 .profile-link-wrapper svg {
+  width: 6px;
+  height: 10px;
   vertical-align: middle;
 }
 .search-chat-list {
@@ -47,6 +49,8 @@
   left: 10px;
   top: 9px;
   color: #999;
+  width: 13px;
+  height: 14px;
 }
 
 .chat-item-wrapper {
@@ -179,6 +183,11 @@
   justify-content: center;
 }
 
+.main-chat-config svg {
+  width: 3px;
+  height: 16px;
+}
+
 .main-chat-content {
   display: flex;
   flex-direction: column;
@@ -276,6 +285,8 @@
 
 .btn-right svg {
   transform: rotate(-180deg);
+  width: 13px;
+  height: 12px;
 }
 
 .message-input {

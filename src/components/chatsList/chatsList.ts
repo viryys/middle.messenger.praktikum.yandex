@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
-import * as styles from "../../layouts/main/main.css";
+import "../../layouts/main/main.css";
 import compile from "../../utils/compile";
-import template from "./chatsList.hbs";
+import * as template from "./chatsList.hbs";
 import ChatItem from "../chatItem/chatItem";
 import { Event } from "../../utils/types";
 import Store from "../../utils/store";
@@ -32,12 +32,12 @@ export default class ChatsList extends Block {
     let chatsList: any = [];
 
     if (chats && chats.length > 0) {
-      chatsList = chats.reduce((accumulator, chat: any, index: number) => {
+      chatsList = chats.reduce((accumulator: ChatItem[], chat: any, index: number) => {
         const chatItem = new ChatItem({
           ...chat,
           events: {
             click: {
-              currentEl: "._main__chat-item-wrapper",
+              currentEl: ".chat-item-wrapper",
               func: handleChatItemClick,
             },
           },
@@ -48,6 +48,6 @@ export default class ChatsList extends Block {
         return accumulator;
       }, []);
     }
-    return compile(template, { styles, ...this.props, chatsList });
+    return compile(template, { ...this.props, chatsList });
   }
 }

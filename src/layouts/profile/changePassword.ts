@@ -1,5 +1,5 @@
-import profileTemplate from "./change-password.hbs";
-import * as styles from "./profile.css";
+import * as profileTemplate from "./change-password.hbs";
+import "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import BackButton from "../../components/backButton";
@@ -16,7 +16,7 @@ import Store from "../../utils/store";
 const store = new Store();
 const appStore = store.getState();
 
-export class ChangePassword extends Block {
+export default class ChangePassword extends Block {
   private userApi = new UserAPI();
 
   private router = new Router("#root");
@@ -36,7 +36,7 @@ export class ChangePassword extends Block {
 
   protected render(): DocumentFragment {
     const inputOldPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "oldPassword",
       labelName: undefined,
       placeholder: "Ввведите старый пароль",
@@ -56,12 +56,12 @@ export class ChangePassword extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 6),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputOldPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -69,7 +69,7 @@ export class ChangePassword extends Block {
     });
 
     const inputPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "newPassword",
       labelName: undefined,
       placeholder: "Ввведите новый пароль",
@@ -80,7 +80,7 @@ export class ChangePassword extends Block {
         validate: true,
         message: "",
       },
-      errorClassName: styles.error,
+      errorClassName: "error",
       events: {
         blur: {
           currentEl: "#newPassword",
@@ -90,12 +90,12 @@ export class ChangePassword extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 6),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -103,7 +103,7 @@ export class ChangePassword extends Block {
     });
 
     const inputRepeatPassword = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "repeat_password",
       labelName: undefined,
       placeholder: "Повторите пароль",
@@ -114,7 +114,7 @@ export class ChangePassword extends Block {
         validate: true,
         message: "",
       },
-      errorClassName: styles.error,
+      errorClassName: "error",
       events: {
         blur: {
           currentEl: "#repeat_password",
@@ -123,12 +123,12 @@ export class ChangePassword extends Block {
             const validateRules = [
               Validate.equelValues(inputVal, inputPassword.getValue()),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputRepeatPassword.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -136,8 +136,8 @@ export class ChangePassword extends Block {
     });
 
     const errorResponse = new ErrorResponse({
-      wrapperClassName: styles.profileStringError,
-      errorClassName: styles.errorMsg,
+      wrapperClassName: "profileStringError",
+      errorClassName: "errorMsg",
       message: "",
     });
 
@@ -145,7 +145,7 @@ export class ChangePassword extends Block {
       title: "Сохранить",
       type: Types.Submit,
       id: "submitPassword",
-      className: styles.button,
+      className: "button",
       events: {
         click: {
           currentEl: "#submitPassword",
@@ -174,12 +174,15 @@ export class ChangePassword extends Block {
 
             let validateForm = true;
 
+            // eslint-disable-next-line no-restricted-syntax
             for (const [key, value] of Object.entries(form)) {
+              // eslint-disable-next-line no-loop-func
               value.some((validateVal) => {
                 if (!validateVal.validate) {
+                  // @ts-ignore
                   inputFields[key].setProps({
                     validate: validateVal,
-                    errorClassName: styles.error,
+                    errorClassName: "error",
                   });
 
                   validateForm = false;
@@ -200,9 +203,7 @@ export class ChangePassword extends Block {
 
               this.userApi.changePassword(allData)
                 .then((res: XMLHttpRequest) => {
-
                   if (res.status === 200) {
-
                     this.router.go("/chats");
 
                     errorResponse.setProps({
@@ -213,12 +214,12 @@ export class ChangePassword extends Block {
 
                     console.log(result, res);
                     errorResponse.setProps({
-                      errorClassName: styles.errorMsg,
+                      errorClassName: "errorMsg",
                       message: res.response,
                     });
                   }
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err);
                 });
             }
@@ -248,7 +249,6 @@ export class ChangePassword extends Block {
       backButton,
       errorResponse,
       avatar,
-      styles,
     });
   }
 }

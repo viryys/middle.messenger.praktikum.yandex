@@ -1,5 +1,5 @@
 import Block, { CurrentElementEvent } from "../../utils/Block";
-import template from "./link.hbs";
+import * as template from "./link.hbs";
 import compile from "../../utils/compile";
 
 type Props = {

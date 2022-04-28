@@ -22,6 +22,7 @@ enum EVENTS {
 }
 
 export default class Store {
+  // eslint-disable-next-line no-use-before-define
   static __instance: Store;
 
   private eventBus: () => EventBus;
@@ -75,6 +76,7 @@ export default class Store {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target: State, prop: string, value: unknown) {
+        // eslint-disable-next-line no-param-reassign
         target[prop] = value;
         if (prop === "isLogin" || prop === "user") {
           self.eventBus().emit(EVENTS.LOGIN_DU);

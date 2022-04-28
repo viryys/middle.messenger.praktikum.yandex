@@ -1,9 +1,9 @@
-import arrowRight from "bundle-text:../../../static/img/arrow-right.svg";
-import zoom from "bundle-text:../../../static/img/zoom.svg";
-import clip from "bundle-text:../../../static/img/clip.svg";
-import backSvg from "bundle-text:../../../static/img/back.svg";
-import mainTemplate from "./main.hbs";
-import * as styles from "./main.css";
+import * as arrowRight from "../../../static/img/arrow-right.svg";
+import * as zoom from "../../../static/img/zoom.svg";
+import * as clip from "../../../static/img/clip.svg";
+import * as backSvg from "../../../static/img/back.svg";
+import * as mainTemplate from "./main.hbs";
+import "./main.css";
 import compile from "../../utils/compile";
 import Block from "../../utils/Block";
 import Store from "../../utils/store";
@@ -23,7 +23,7 @@ const appStore = store.getState();
 const router = new Router("#root");
 
 const linkProfile = new Link({
-  wrapperClassName: styles["profile-link-wrapper"],
+  wrapperClassName: "profile-link-wrapper",
   className: "",
   id: "linkProfile",
   link: "/profile",
@@ -47,7 +47,7 @@ export default class ChatPage extends Block {
     super("div", {
       chats: [],
       currentChat: null,
-    }, styles["main-wrapper"]);
+    }, "main-wrapper");
 
     this.props.chats = appStore.chats;
     store.setListener(this.updateStore.bind(this), "CHATS");
@@ -70,11 +70,11 @@ export default class ChatPage extends Block {
     const chatTitle = new ChatTitle({
       chats,
       currentChat,
-    }, styles["main-chat-top"]);
+    }, "main-chat-top");
 
     const chatPosts = new ChatPosts(
       { messages: chatMessages },
-      styles["main-chat-content"],
+      "main-chat-content",
     );
 
     const message = new SendMessageInput({
@@ -88,7 +88,7 @@ export default class ChatPage extends Block {
       title: `${backSvg}`,
       id: "submitMessage",
       type: Types.Button,
-      className: styles.btnSubmit,
+      className: "btnSubmit",
       events: {
         click: {
           currentEl: "#submitMessage",
@@ -105,10 +105,9 @@ export default class ChatPage extends Block {
           },
         },
       },
-    }, styles["btn-right"]);
+    }, "btn-right");
 
     const data = {
-      styles,
       zoom,
       clip,
       chatsList,

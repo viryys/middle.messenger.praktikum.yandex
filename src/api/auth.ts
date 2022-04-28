@@ -13,9 +13,7 @@ export default class AuthAPI {
   }
 
   public logout() {
-    const options = {
-      data: null,
-    };
+    const options = {};
 
     return this.api.post("/auth/logout", options);
   }

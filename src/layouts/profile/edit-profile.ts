@@ -1,5 +1,5 @@
-import editProfileTemplate from "./edit-profile.hbs";
-import * as styles from "./profile.css";
+import * as editProfileTemplate from "./edit-profile.hbs";
+import "./profile.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 import BackButton from "../../components/backButton";
@@ -20,16 +20,8 @@ const appStore = store.getState();
 export default class EditProfile extends Block {
   private userApi = new UserAPI();
 
-  private user: any = null;
-
   constructor() {
     super("div");
-  }
-
-  componentDidMount(oldProps: any) {
-    super.componentDidMount(oldProps);
-
-    console.log("edit profile", store, appStore);
   }
 
   protected render(): DocumentFragment {
@@ -46,13 +38,13 @@ export default class EditProfile extends Block {
     });
 
     const errorResponse = new ErrorResponse({
-      wrapperClassName: styles.profileStringError,
-      errorClassName: styles.errorMsg,
+      wrapperClassName: "profileStringError",
+      errorClassName: "errorMsg",
       message: "",
     });
 
     const inputEmail = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "email",
       placeholder: "Введите адрес почты",
       inputName: "email",
@@ -71,12 +63,12 @@ export default class EditProfile extends Block {
             const validateRules = [
               Validate.email(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputEmail.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -84,7 +76,7 @@ export default class EditProfile extends Block {
     });
 
     const inputLogin = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "login",
       placeholder: "Изменить логин",
       inputName: "login",
@@ -104,12 +96,12 @@ export default class EditProfile extends Block {
               Validate.requireField(inputVal),
               Validate.minLength(inputVal, 3),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputLogin.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -117,7 +109,7 @@ export default class EditProfile extends Block {
     });
 
     const inputFirstName = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "first_name",
       placeholder: "Изменить имя",
       inputName: "first_name",
@@ -138,12 +130,12 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputFirstName.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -151,7 +143,7 @@ export default class EditProfile extends Block {
     });
 
     const inputSecondName = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "second_name",
       placeholder: "Изменить фамилию",
       inputName: "second_name",
@@ -172,12 +164,12 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputSecondName.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -185,7 +177,7 @@ export default class EditProfile extends Block {
     });
 
     const inputDisplayName = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "display_name",
       placeholder: "Измените имя в чате",
       inputName: "display_name",
@@ -205,12 +197,12 @@ export default class EditProfile extends Block {
               Validate.minLength(inputVal, 3),
               Validate.firstName(inputVal),
             ];
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputDisplayName.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -218,7 +210,7 @@ export default class EditProfile extends Block {
     });
 
     const inputPhone = new Input({
-      wrapperClassName: styles.profileStringRight,
+      wrapperClassName: "profileStringRight",
       id: "phone",
       placeholder: "Изменить телефон",
       inputName: "phone",
@@ -239,12 +231,12 @@ export default class EditProfile extends Block {
               Validate.phone(inputVal),
             ];
 
-            const validateInput = validateInputForm(inputVal, validateRules);
+            const validateInput = validateInputForm(validateRules);
 
             inputPhone.setProps({
               value: inputVal,
               validate: validateInput,
-              errorClassName: !validateInput.validate ? styles.error : "",
+              errorClassName: !validateInput.validate ? "error" : "",
             });
           },
         },
@@ -255,7 +247,7 @@ export default class EditProfile extends Block {
       title: "Сохранить",
       type: Types.Submit,
       id: "submitSignUp",
-      className: styles.button,
+      className: "button",
       events: {
         click: {
           currentEl: "#submitSignUp",
@@ -307,9 +299,10 @@ export default class EditProfile extends Block {
                 // eslint-disable-next-line no-loop-func
                 (validateVal) => {
                   if (!validateVal.validate) {
+                    // @ts-ignore
                     inputFields[key].setProps({
                       validate: validateVal,
-                      errorClassName: styles.error,
+                      errorClassName: "error",
                     });
 
                     validateForm = false;
@@ -336,7 +329,7 @@ export default class EditProfile extends Block {
                   if (res && res.status === 200) {
                     errorResponse.setProps({
                       message: "Данные успешно сохранены",
-                      errorClassName: styles.success,
+                      errorClassName: "success",
                     });
 
                     authController.getCurrentUser();
@@ -373,7 +366,6 @@ export default class EditProfile extends Block {
       errorResponse,
       avatar,
       backButton,
-      styles,
     };
 
     return compile(editProfileTemplate, data);

@@ -40,7 +40,7 @@ export default class Block<P = any> {
    *
    * @returns {void}
    */
-  public constructor(tagName?: string, props?: P, classNameMain?: string) {
+  public constructor(tagName: string, props?: P, classNameMain?: string) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
@@ -57,7 +57,7 @@ export default class Block<P = any> {
     eventBus.emit(EVENTS.INIT, this.props);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(EVENTS.INIT, this.init.bind(this));
     eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -74,14 +74,13 @@ export default class Block<P = any> {
     this.eventBus().emit(EVENTS.FLOW_CDM, this.props);
   }
 
-  _componentDidMount(props: P) {
-    this.componentDidMount(props);
+  _componentDidMount() {
+    this.componentDidMount();
 
     this.eventBus().emit(EVENTS.FLOW_RENDER);
   }
 
-  // Может переопределять пользователь, необязательно трогать
-  componentDidMount(oldProps: P) {}
+  componentDidMount() {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -188,6 +187,7 @@ export default class Block<P = any> {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private createDocumentElement(tagName: string, classNameMain?: string) {
     const element = document.createElement(tagName);
 

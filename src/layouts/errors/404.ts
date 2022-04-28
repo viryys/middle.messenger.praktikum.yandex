@@ -1,5 +1,5 @@
-import error404Template from "./404.hbs";
-import * as styles from "./errors.css";
+import * as error404Template from "./404.hbs";
+import "./errors.css";
 import Block from "../../utils/Block";
 import compile from "../../utils/compile";
 
@@ -9,8 +9,7 @@ export default class Error404 extends Block {
   }
 
   protected render(): DocumentFragment {
-    const data = { styles };
+    const data = { };
     return compile(error404Template, data);
   }
 }
-
